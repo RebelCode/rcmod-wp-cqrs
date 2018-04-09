@@ -54,6 +54,15 @@ class WpCqrsModule extends AbstractBaseModule
                 'sql_expression_template_container'               => function(ContainerInterface $c) {
                     return $c->get('container_factory')->make([
                         'definitions' => [
+                            'literal'                                      => function(ContainerInterface $c) {
+                                return new SqlLiteralTermTemplate();
+                            },
+                            'variable'                                     => function(ContainerInterface $c) {
+                                return new SqlReferenceTermTemplate();
+                            },
+                            'entity_field'                                 => function(ContainerInterface $c) {
+                                return new SqlReferenceTermTemplate();
+                            },
                             SqlLogicalTypeInterface::T_AND                 => function(ContainerInterface $c) {
                                 return new SqlOperatorExpressionTemplate(SqlOperatorInterface::OP_AND, $c);
                             },
