@@ -10,10 +10,13 @@ use Dhii\Storage\Resource\Sql\Expression\SqlRelationalTypeInterface;
 use Dhii\Util\String\StringableInterface as Stringable;
 use Psr\Container\ContainerInterface;
 use RebelCode\Expression\Builder\ExpressionBuilder;
+use RebelCode\Expression\EntityFieldTerm;
+use RebelCode\Expression\LiteralTerm;
 use RebelCode\Expression\LogicalExpression;
 use RebelCode\Expression\Renderer\Sql\SqlBetweenExpressionTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlFunctionExpressionTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlOperatorExpressionTemplate;
+use RebelCode\Expression\VariableTerm;
 use RebelCode\Modular\Module\AbstractBaseModule;
 
 /**
@@ -100,10 +103,13 @@ class WpCqrsModule extends AbstractBaseModule
                 },
                 // Expression builder
                 'sql_expression_builder'                          => function(ContainerInterface $c) {
-                    return new ExpressionBuilder($c->get('expression_builder_factories'));
+                    return new ExpressionBuilder($c->get('sql_expression_builder_factories'));
                 },
                 'sql_expression_builder_factories'                => function(ContainerInterface $c) {
                     return [
+                        'literal'         => $c->get('sql_literal_expression_builder_factory'),
+                        'variable'        => $c->get('sql_variable_expression_builder_factory'),
+                        'entityField'     => $c->get('sql_entity_field_expression_builder_factory'),
                         'and'             => $c->get('sql_and_expression_builder_factory'),
                         'or'              => $c->get('sql_or_expression_builder_factory'),
                         'not'             => $c->get('sql_not_expression_builder_factory'),
@@ -114,6 +120,21 @@ class WpCqrsModule extends AbstractBaseModule
                         'lessThan'        => $c->get('sql_less_than_expression_builder_factory'),
                         'lessThanEqualTo' => $c->get('sql_less_equal_to_expression_builder_factory'),
                     ];
+                },
+                'sql_literal_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function($config) {
+                        return new LiteralTerm($config['arguments'][0], 'literal');
+                    });
+                },
+                'sql_variable_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function($config) {
+                        return new VariableTerm($config['arguments'][0], 'variable');
+                    });
+                },
+                'sql_entity_field_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function($config) {
+                        return new EntityFieldTerm($config['arguments'][0], $config['arguments'][1], 'entity_field');
+                    });
                 },
                 'sql_and_expression_builder_factory'              => function(ContainerInterface $c) {
                     return new GenericCallbackFactory(function($config) {
