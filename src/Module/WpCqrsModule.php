@@ -3,11 +3,16 @@
 namespace RebelCode\Storage\Resource\WordPress\Module;
 
 use Dhii\Data\Container\ContainerFactoryInterface;
+use Dhii\Expression\Type\BooleanTypeInterface;
+use Dhii\Factory\GenericCallbackFactory;
 use Dhii\Storage\Resource\Sql\Expression\SqlLogicalTypeInterface;
 use Dhii\Storage\Resource\Sql\Expression\SqlOperatorInterface;
 use Dhii\Storage\Resource\Sql\Expression\SqlRelationalTypeInterface;
 use Dhii\Util\String\StringableInterface as Stringable;
 use Psr\Container\ContainerInterface;
+use RebelCode\Expression\Builder\ExpressionBuilder;
+use RebelCode\Expression\Expression;
+use RebelCode\Expression\LogicalExpression;
 use RebelCode\Expression\Renderer\Sql\SqlBetweenExpressionTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlFunctionExpressionTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlOperatorExpressionTemplate;
@@ -94,6 +99,88 @@ class WpCqrsModule extends AbstractBaseModule
                     global $wpdb;
 
                     return $wpdb;
+                },
+                // Expression builder
+                'sql_expression_builder'                          => function(ContainerInterface $c) {
+                    return new ExpressionBuilder($c->get('expression_builder_factories'));
+                },
+                'sql_expression_builder_factories'                => function(ContainerInterface $c) {
+                    return [
+                        'and'             => $c->get('sql_and_expression_builder_factory'),
+                        'or'              => $c->get('sql_or_expression_builder_factory'),
+                        'not'             => $c->get('sql_not_expression_builder_factory'),
+                        'like'            => $c->get('sql_like_expression_builder_factory'),
+                        'equalTo'         => $c->get('sql_equal_to_expression_builder_factory'),
+                        'greaterThan'     => $c->get('sql_greater_than_expression_builder_factory'),
+                        'greaterEqualTo'  => $c->get('sql_greater_equal_to_expression_builder_factory'),
+                        'lessThan'        => $c->get('sql_less_than_expression_builder_factory'),
+                        'lessThanEqualTo' => $c->get('sql_less_equal_to_expression_builder_factory'),
+                    ];
+                },
+                'sql_and_expression_builder_factory'              => function(ContainerInterface $c) {
+                    return new GenericCallbackFactory(function($config) {
+                        return new LogicalExpression($config['arguments'], false, SqlLogicalTypeInterface::T_AND);
+                    });
+                },
+                'sql_or_expression_builder_factory'               => function(ContainerInterface $c) {
+                    return new GenericCallbackFactory(function($config) {
+                        return new LogicalExpression($config['arguments'], false, SqlLogicalTypeInterface::T_OR);
+                    });
+                },
+                'sql_not_expression_builder_factory'              => function(ContainerInterface $c) {
+                    return new GenericCallbackFactory(function($config) {
+                        return new LogicalExpression($config['arguments'], false, SqlLogicalTypeInterface::T_NOT);
+                    });
+                },
+                'sql_like_expression_builder_factory'             => function(ContainerInterface $c) {
+                    return new GenericCallbackFactory(function($config) {
+                        $arguments = $config['arguments'];
+                        $negation = is_bool($arguments[0])
+                            ? $arguments[0]
+                            : false;
+                        $terms = is_bool($arguments[0])
+                            ? array_slice($arguments, 1)
+                            : $arguments;
+
+                        return new LogicalExpression($terms, $negation, SqlLogicalTypeInterface::T_LIKE);
+                    });
+                },
+                'sql_equal_to_expression_builder_factory'         => function(ContainerInterface $c) {
+                    return new GenericCallbackFactory(function($config) {
+                        $arguments = $config['arguments'];
+                        $negation = is_bool($arguments[0])
+                            ? $arguments[0]
+                            : false;
+                        $terms = is_bool($arguments[0])
+                            ? array_slice($arguments, 1)
+                            : $arguments;
+
+                        return new LogicalExpression($terms, $negation, SqlLogicalTypeInterface::T_EQUAL_TO);
+                    });
+                },
+                'sql_greater_than_expression_builder_factory'     => function(ContainerInterface $c) {
+                    return new GenericCallbackFactory(function($config) {
+                        return new LogicalExpression($config['arguments'], false,
+                            SqlLogicalTypeInterface::T_GREATER_THAN);
+                    });
+                },
+                'sql_greater_equal_to_expression_builder_factory' => function(ContainerInterface $c) {
+                    return new GenericCallbackFactory(function($config) {
+                        return new LogicalExpression($config['arguments'], false,
+                            SqlLogicalTypeInterface::T_GREATER_EQUAL_TO);
+                    });
+                },
+                'sql_less_than_expression_builder_factory'        => function(ContainerInterface $c) {
+                    return new GenericCallbackFactory(function($config) {
+                        return new LogicalExpression($config['arguments'], false,
+                            SqlLogicalTypeInterface::T_LESS_THAN);
+                    });
+                },
+                'sql_less_equal_to_expression_builder_factory'    => function(ContainerInterface $c) {
+                    return new GenericCallbackFactory(function($config) {
+                        return new LogicalExpression($config['arguments'], false,
+                            SqlLogicalTypeInterface::T_LESS_EQUAL_TO);
+                    });
                 },
             ]
         );
