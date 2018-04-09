@@ -3,7 +3,6 @@
 namespace RebelCode\Storage\Resource\WordPress\Module;
 
 use Dhii\Data\Container\ContainerFactoryInterface;
-use Dhii\Expression\Type\BooleanTypeInterface;
 use Dhii\Factory\GenericCallbackFactory;
 use Dhii\Storage\Resource\Sql\Expression\SqlLogicalTypeInterface;
 use Dhii\Storage\Resource\Sql\Expression\SqlOperatorInterface;
@@ -11,7 +10,6 @@ use Dhii\Storage\Resource\Sql\Expression\SqlRelationalTypeInterface;
 use Dhii\Util\String\StringableInterface as Stringable;
 use Psr\Container\ContainerInterface;
 use RebelCode\Expression\Builder\ExpressionBuilder;
-use RebelCode\Expression\Expression;
 use RebelCode\Expression\LogicalExpression;
 use RebelCode\Expression\Renderer\Sql\SqlBetweenExpressionTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlFunctionExpressionTemplate;
