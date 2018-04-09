@@ -35,7 +35,8 @@
     },
     "autoload": {
         "psr-4": {
-            "RebelCode\\Storage\\Resource\\WordPress\\Module\\": "src"
+            "RebelCode\\Expression\\": "src/Expression",
+            "RebelCode\\Storage\\Resource\\WordPress\\Module\\": "src/Module"
         }
     },
     "scripts": {
