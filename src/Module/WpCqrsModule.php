@@ -15,7 +15,9 @@ use RebelCode\Expression\LiteralTerm;
 use RebelCode\Expression\LogicalExpression;
 use RebelCode\Expression\Renderer\Sql\SqlBetweenExpressionTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlFunctionExpressionTemplate;
+use RebelCode\Expression\Renderer\Sql\SqlLiteralTermTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlOperatorExpressionTemplate;
+use RebelCode\Expression\Renderer\Sql\SqlReferenceTermTemplate;
 use RebelCode\Expression\VariableTerm;
 use RebelCode\Modular\Module\AbstractBaseModule;
 
@@ -50,8 +52,8 @@ class WpCqrsModule extends AbstractBaseModule
             [
                 // Container with all SQL expression templates
                 'sql_expression_template_container'               => function(ContainerInterface $c) {
-                    return $c->get('container_factory')->make(
-                        [
+                    return $c->get('container_factory')->make([
+                        'definitions' => [
                             SqlLogicalTypeInterface::T_AND                 => function(ContainerInterface $c) {
                                 return new SqlOperatorExpressionTemplate(SqlOperatorInterface::OP_AND, $c);
                             },
@@ -89,7 +91,7 @@ class WpCqrsModule extends AbstractBaseModule
                                 return new SqlFunctionExpressionTemplate(SqlOperatorInterface::OP_EXISTS, $c);
                             },
                         ]
-                    );
+                    ]);
                 },
                 // Master SQL expression template
                 'sql_expression_template'                         => function(ContainerInterface $c) {
