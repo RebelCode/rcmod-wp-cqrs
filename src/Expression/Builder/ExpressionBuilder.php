@@ -90,7 +90,7 @@ class ExpressionBuilder
      */
     protected function _getExpressionFactoryKey($methodName)
     {
-        return strtolower($methodName);
+        return $methodName;
     }
 
     /**
