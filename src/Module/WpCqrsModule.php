@@ -104,7 +104,7 @@ class WpCqrsModule extends AbstractBaseModule
                 },
                 // Master SQL expression template
                 'sql_expression_template'                         => function(ContainerInterface $c) {
-                    return new SqlExpressionMasterTemplate($c->get('sql-expression-template-container'));
+                    return new SqlExpressionMasterTemplate($c->get('sql_expression_template_container'));
                 },
                 // WordPress' database adapter/connection
                 'wpdb'                                            => function(ContainerInterface $c) {
