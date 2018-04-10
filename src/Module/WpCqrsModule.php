@@ -56,6 +56,13 @@ class WpCqrsModule extends AbstractBaseModule
 
                     return $wpdb;
                 },
+                'wpdb_prefixer'                                   => function(ContainerInterface $c) {
+                    $wpdb = $c->get('wpdb');
+
+                    return function($toPrefix) use ($wpdb) {
+                        return $wpdb->prefix . $toPrefix;
+                    };
+                },
                 // Container with all SQL expression templates
                 'sql_expression_template_container'               => function(ContainerInterface $c) {
                     return $c->get('container_factory')->make([
