@@ -59,11 +59,18 @@ class WpCqrsModule extends AbstractBaseModule
                 'wpdb_table_prefixer' => function (ContainerInterface $c) {
                     $wpdb = $c->get('wpdb');
 
-                    return function ($tables) use ($wpdb) {
+                    return function ($table) use ($wpdb) {
+                        return $wpdb->prefix . $table;
+                    };
+                },
+                'wpdb_table_map_prefixer' => function (ContainerInterface $c) {
+                    $prefixer = $c->get('wpdb_table_prefixer');
+
+                    return function ($tables) use ($prefixer) {
                         $prefixed = [];
 
                         foreach ($tables as $_table => $_alias) {
-                            $prefixed[$wpdb->prefix . $_table] = $_alias;
+                            $prefixed[$prefixer($_table)] = $_alias;
                         }
 
                         return $prefixed;
