@@ -9,16 +9,16 @@ use Dhii\Data\Container\CreateNotFoundExceptionCapableTrait;
 use Dhii\Data\Container\NormalizeContainerCapableTrait;
 use Dhii\Data\Container\NormalizeKeyCapableTrait;
 use Dhii\Data\Object\DataStoreAwareContainerTrait;
+use Dhii\Exception\CreateInternalExceptionCapableTrait;
 use Dhii\Exception\CreateInvalidArgumentExceptionCapableTrait;
 use Dhii\Exception\CreateOutOfRangeExceptionCapableTrait;
+use Dhii\Exception\InternalException;
 use Dhii\Expression\TermInterface;
-use Dhii\Factory\Exception\CouldNotMakeExceptionInterface;
 use Dhii\I18n\StringTranslatingTrait;
 use Dhii\Util\Normalization\NormalizeStringCapableTrait;
 use Dhii\Util\String\StringableInterface as Stringable;
-use Psr\Container\ContainerExceptionInterface;
+use Exception as RootException;
 use Psr\Container\ContainerInterface;
-use Psr\Container\NotFoundExceptionInterface;
 use stdClass;
 
 /**
@@ -82,6 +82,13 @@ class ExpressionBuilder
     use CreateNotFoundExceptionCapableTrait;
 
     /*
+     * Provides functionality for creating internal exceptions.
+     *
+     * @since [*next-version*]
+     */
+    use CreateInternalExceptionCapableTrait;
+
+    /*
      * Provides functionality for creating invalid-argument exceptions.
      *
      * @since [*next-version*]
@@ -122,9 +129,7 @@ class ExpressionBuilder
      * @param string $name      The name of the called method.
      * @param array  $arguments The arguments given to the called method.
      *
-     * @throws NotFoundExceptionInterface If the called method could not be mapped to an expression factory.
-     * @throws ContainerExceptionInterface If an error occurred while mapping to an expression factory.
-     * @throws CouldNotMakeExceptionInterface If an error occurred while creating the expression instance.
+     * @throws InternalException If an error occurred while mapping to an expression factory.
      *
      * @return TermInterface The created expression.
      */
@@ -133,7 +138,16 @@ class ExpressionBuilder
         $key = $this->_getExpressionFactoryKey($name);
         $config = $this->_getExpressionFactoryConfig($arguments);
 
-        return $this->_containerGet($this->_getDataStore(), $key)->make($config);
+        try {
+            $factory = $this->_containerGet($this->_getDataStore(), $key);
+            return $factory->make($config);
+        } catch (RootException $exception) {
+            throw $this->_createInternalException(
+                $this->__('A problem occurred while trying to map the called method to an expression factory'),
+                null,
+                $exception
+            );
+        }
     }
 
     /**
