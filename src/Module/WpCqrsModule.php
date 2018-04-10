@@ -137,20 +137,22 @@ class WpCqrsModule extends AbstractBaseModule
                     return new ExpressionBuilder($c->get('sql_expression_builder_factories'));
                 },
                 'sql_expression_builder_factories' => function (ContainerInterface $c) {
-                    return [
-                        'literal'         => $c->get('sql_literal_expression_builder_factory'),
-                        'variable'        => $c->get('sql_variable_expression_builder_factory'),
-                        'entityField'     => $c->get('sql_entity_field_expression_builder_factory'),
-                        'and'             => $c->get('sql_and_expression_builder_factory'),
-                        'or'              => $c->get('sql_or_expression_builder_factory'),
-                        'not'             => $c->get('sql_not_expression_builder_factory'),
-                        'like'            => $c->get('sql_like_expression_builder_factory'),
-                        'equalTo'         => $c->get('sql_equal_to_expression_builder_factory'),
-                        'greaterThan'     => $c->get('sql_greater_than_expression_builder_factory'),
-                        'greaterEqualTo'  => $c->get('sql_greater_equal_to_expression_builder_factory'),
-                        'lessThan'        => $c->get('sql_less_than_expression_builder_factory'),
-                        'lessThanEqualTo' => $c->get('sql_less_equal_to_expression_builder_factory'),
-                    ];
+                    return $c->get('container_factory')->make([
+                        'definitions' => [
+                            'lit'  => $c->get('sql_literal_expression_builder_factory'),
+                            'var'  => $c->get('sql_variable_expression_builder_factory'),
+                            'ef'   => $c->get('sql_entity_field_expression_builder_factory'),
+                            'and'  => $c->get('sql_and_expression_builder_factory'),
+                            'or'   => $c->get('sql_or_expression_builder_factory'),
+                            'not'  => $c->get('sql_not_expression_builder_factory'),
+                            'like' => $c->get('sql_like_expression_builder_factory'),
+                            'eq'   => $c->get('sql_equal_to_expression_builder_factory'),
+                            'gt'   => $c->get('sql_greater_than_expression_builder_factory'),
+                            'ge'   => $c->get('sql_greater_equal_to_expression_builder_factory'),
+                            'lt'   => $c->get('sql_less_than_expression_builder_factory'),
+                            'le'   => $c->get('sql_less_equal_to_expression_builder_factory'),
+                        ],
+                    ]);
                 },
                 'sql_literal_expression_builder_factory' => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
