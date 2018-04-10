@@ -6,6 +6,11 @@ use Dhii\Exception\CreateInvalidArgumentExceptionCapableTrait;
 use Dhii\Expression\TermInterface;
 use Dhii\I18n\StringTranslatingTrait;
 
+/**
+ * Abstract functionality for expressions and terms.
+ *
+ * @since [*next-version*]
+ */
 abstract class AbstractTerm implements TermInterface
 {
     /*

@@ -32,26 +32,83 @@ use stdClass;
  */
 class ExpressionBuilder
 {
+    /*
+     * Provides awareness of a container data store.
+     *
+     * @since [*next-version*]
+     */
     use DataStoreAwareContainerTrait;
 
+    /*
+     * Provides functionality for reading data from any type of container.
+     *
+     * @since [*next-version*]
+     */
     use ContainerGetCapableTrait;
 
+    /*
+     * Provides key normalization functionality.
+     *
+     * @since [*next-version*]
+     */
     use NormalizeKeyCapableTrait;
 
+    /*
+     * Provides string normalization functionality.
+     *
+     * @since [*next-version*]
+     */
     use NormalizeStringCapableTrait;
 
+    /*
+     * Providers container normalization functionality.
+     *
+     * @since [*next-version*]
+     */
     use NormalizeContainerCapableTrait;
 
+    /*
+     * Provides functionality for creating container exceptions.
+     *
+     * @since [*next-version*]
+     */
     use CreateContainerExceptionCapableTrait;
 
+    /*
+     * Provides functionality for creating not-found exceptions.
+     *
+     * @since [*next-version*]
+     */
     use CreateNotFoundExceptionCapableTrait;
 
+    /*
+     * Provides functionality for creating invalid-argument exceptions.
+     *
+     * @since [*next-version*]
+     */
     use CreateInvalidArgumentExceptionCapableTrait;
 
+    /*
+     * Provides functionality for creating out-of-range exceptions.
+     *
+     * @since [*next-version*]
+     */
     use CreateOutOfRangeExceptionCapableTrait;
 
+    /*
+     * Provides string translating functionality.
+     *
+     * @since [*next-version*]
+     */
     use StringTranslatingTrait;
 
+    /**
+     * Constructor.
+     *
+     * @since [*next-version*]
+     *
+     * @param array|ArrayAccess|stdClass|ContainerInterface $factories The expression factories.
+     */
     public function __construct($factories)
     {
         $this->_setDataStore($factories);
