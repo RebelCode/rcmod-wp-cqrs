@@ -51,79 +51,79 @@ class WpCqrsModule extends AbstractBaseModule
         return $this->_createContainer(
             [
                 // WordPress' database adapter/connection
-                'wpdb'                                            => function(ContainerInterface $c) {
+                'wpdb' => function (ContainerInterface $c) {
                     global $wpdb;
 
                     return $wpdb;
                 },
-                'wpdb_prefixer'                                   => function(ContainerInterface $c) {
+                'wpdb_prefixer' => function (ContainerInterface $c) {
                     $wpdb = $c->get('wpdb');
 
-                    return function($toPrefix) use ($wpdb) {
+                    return function ($toPrefix) use ($wpdb) {
                         return $wpdb->prefix . $toPrefix;
                     };
                 },
                 // Container with all SQL expression templates
-                'sql_expression_template_container'               => function(ContainerInterface $c) {
+                'sql_expression_template_container' => function (ContainerInterface $c) {
                     return $c->get('container_factory')->make([
                         'definitions' => [
-                            'literal'                                      => function(ContainerInterface $c) {
+                            'literal' => function (ContainerInterface $c) {
                                 return new SqlLiteralTermTemplate();
                             },
-                            'variable'                                     => function(ContainerInterface $c) {
+                            'variable' => function (ContainerInterface $c) {
                                 return new SqlReferenceTermTemplate();
                             },
-                            'entity_field'                                 => function(ContainerInterface $c) {
+                            'entity_field' => function (ContainerInterface $c) {
                                 return new SqlReferenceTermTemplate();
                             },
-                            SqlLogicalTypeInterface::T_AND                 => function(ContainerInterface $c) {
+                            SqlLogicalTypeInterface::T_AND => function (ContainerInterface $c) {
                                 return new SqlOperatorExpressionTemplate(SqlOperatorInterface::OP_AND, $c);
                             },
-                            SqlLogicalTypeInterface::T_OR                  => function(ContainerInterface $c) {
+                            SqlLogicalTypeInterface::T_OR => function (ContainerInterface $c) {
                                 return new SqlOperatorExpressionTemplate(SqlOperatorInterface::OP_OR, $c);
                             },
-                            SqlLogicalTypeInterface::T_NOT                 => function(ContainerInterface $c) {
+                            SqlLogicalTypeInterface::T_NOT => function (ContainerInterface $c) {
                                 return new SqlFunctionExpressionTemplate(SqlOperatorInterface::OP_NOT, $c);
                             },
-                            SqlRelationalTypeInterface::T_EQUAL_TO         => function(ContainerInterface $c) {
+                            SqlRelationalTypeInterface::T_EQUAL_TO => function (ContainerInterface $c) {
                                 return new SqlOperatorExpressionTemplate(SqlOperatorInterface::OP_EQUAL_TO, $c);
                             },
-                            SqlRelationalTypeInterface::T_GREATER_THAN     => function(ContainerInterface $c) {
+                            SqlRelationalTypeInterface::T_GREATER_THAN => function (ContainerInterface $c) {
                                 return new SqlOperatorExpressionTemplate(SqlOperatorInterface::OP_GREATER_THAN, $c);
                             },
-                            SqlRelationalTypeInterface::T_GREATER_EQUAL_TO => function(ContainerInterface $c) {
+                            SqlRelationalTypeInterface::T_GREATER_EQUAL_TO => function (ContainerInterface $c) {
                                 return new SqlOperatorExpressionTemplate(SqlOperatorInterface::OP_GREATER_EQUAL_TO, $c);
                             },
-                            SqlRelationalTypeInterface::T_LESS_THAN        => function(ContainerInterface $c) {
+                            SqlRelationalTypeInterface::T_LESS_THAN => function (ContainerInterface $c) {
                                 return new SqlOperatorExpressionTemplate(SqlOperatorInterface::OP_SMALLER, $c);
                             },
-                            SqlRelationalTypeInterface::T_LESS_EQUAL_TO    => function(ContainerInterface $c) {
+                            SqlRelationalTypeInterface::T_LESS_EQUAL_TO => function (ContainerInterface $c) {
                                 return new SqlOperatorExpressionTemplate(SqlOperatorInterface::OP_SMALLER_EQUAL_TO, $c);
                             },
-                            SqlRelationalTypeInterface::T_LIKE             => function(ContainerInterface $c) {
+                            SqlRelationalTypeInterface::T_LIKE => function (ContainerInterface $c) {
                                 return new SqlOperatorExpressionTemplate(SqlOperatorInterface::OP_LIKE, $c);
                             },
-                            SqlRelationalTypeInterface::T_IN               => function(ContainerInterface $c) {
+                            SqlRelationalTypeInterface::T_IN => function (ContainerInterface $c) {
                                 return new SqlOperatorExpressionTemplate(SqlOperatorInterface::OP_IN, $c);
                             },
-                            SqlRelationalTypeInterface::T_BETWEEN          => function(ContainerInterface $c) {
+                            SqlRelationalTypeInterface::T_BETWEEN => function (ContainerInterface $c) {
                                 return new SqlBetweenExpressionTemplate($c);
                             },
-                            SqlRelationalTypeInterface::T_EXISTS           => function(ContainerInterface $c) {
+                            SqlRelationalTypeInterface::T_EXISTS => function (ContainerInterface $c) {
                                 return new SqlFunctionExpressionTemplate(SqlOperatorInterface::OP_EXISTS, $c);
                             },
-                        ]
+                        ],
                     ]);
                 },
                 // Master SQL expression template
-                'sql_expression_template'                         => function(ContainerInterface $c) {
+                'sql_expression_template' => function (ContainerInterface $c) {
                     return new SqlExpressionMasterTemplate($c->get('sql_expression_template_container'));
                 },
                 // Expression builder
-                'sql_expression_builder'                          => function(ContainerInterface $c) {
+                'sql_expression_builder' => function (ContainerInterface $c) {
                     return new ExpressionBuilder($c->get('sql_expression_builder_factories'));
                 },
-                'sql_expression_builder_factories'                => function(ContainerInterface $c) {
+                'sql_expression_builder_factories' => function (ContainerInterface $c) {
                     return [
                         'literal'         => $c->get('sql_literal_expression_builder_factory'),
                         'variable'        => $c->get('sql_variable_expression_builder_factory'),
@@ -140,37 +140,37 @@ class WpCqrsModule extends AbstractBaseModule
                     ];
                 },
                 'sql_literal_expression_builder_factory' => function (ContainerInterface $c) {
-                    return new GenericCallbackFactory(function($config) {
+                    return new GenericCallbackFactory(function ($config) {
                         return new LiteralTerm($config['arguments'][0], 'literal');
                     });
                 },
                 'sql_variable_expression_builder_factory' => function (ContainerInterface $c) {
-                    return new GenericCallbackFactory(function($config) {
+                    return new GenericCallbackFactory(function ($config) {
                         return new VariableTerm($config['arguments'][0], 'variable');
                     });
                 },
                 'sql_entity_field_expression_builder_factory' => function (ContainerInterface $c) {
-                    return new GenericCallbackFactory(function($config) {
+                    return new GenericCallbackFactory(function ($config) {
                         return new EntityFieldTerm($config['arguments'][0], $config['arguments'][1], 'entity_field');
                     });
                 },
-                'sql_and_expression_builder_factory'              => function(ContainerInterface $c) {
-                    return new GenericCallbackFactory(function($config) {
+                'sql_and_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function ($config) {
                         return new LogicalExpression($config['arguments'], false, SqlLogicalTypeInterface::T_AND);
                     });
                 },
-                'sql_or_expression_builder_factory'               => function(ContainerInterface $c) {
-                    return new GenericCallbackFactory(function($config) {
+                'sql_or_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function ($config) {
                         return new LogicalExpression($config['arguments'], false, SqlLogicalTypeInterface::T_OR);
                     });
                 },
-                'sql_not_expression_builder_factory'              => function(ContainerInterface $c) {
-                    return new GenericCallbackFactory(function($config) {
+                'sql_not_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function ($config) {
                         return new LogicalExpression($config['arguments'], false, SqlLogicalTypeInterface::T_NOT);
                     });
                 },
-                'sql_like_expression_builder_factory'             => function(ContainerInterface $c) {
-                    return new GenericCallbackFactory(function($config) {
+                'sql_like_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function ($config) {
                         $arguments = $config['arguments'];
                         $negation = is_bool($arguments[0])
                             ? $arguments[0]
@@ -182,8 +182,8 @@ class WpCqrsModule extends AbstractBaseModule
                         return new LogicalExpression($terms, $negation, SqlLogicalTypeInterface::T_LIKE);
                     });
                 },
-                'sql_equal_to_expression_builder_factory'         => function(ContainerInterface $c) {
-                    return new GenericCallbackFactory(function($config) {
+                'sql_equal_to_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function ($config) {
                         $arguments = $config['arguments'];
                         $negation = is_bool($arguments[0])
                             ? $arguments[0]
@@ -195,26 +195,26 @@ class WpCqrsModule extends AbstractBaseModule
                         return new LogicalExpression($terms, $negation, SqlLogicalTypeInterface::T_EQUAL_TO);
                     });
                 },
-                'sql_greater_than_expression_builder_factory'     => function(ContainerInterface $c) {
-                    return new GenericCallbackFactory(function($config) {
+                'sql_greater_than_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function ($config) {
                         return new LogicalExpression($config['arguments'], false,
                             SqlLogicalTypeInterface::T_GREATER_THAN);
                     });
                 },
-                'sql_greater_equal_to_expression_builder_factory' => function(ContainerInterface $c) {
-                    return new GenericCallbackFactory(function($config) {
+                'sql_greater_equal_to_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function ($config) {
                         return new LogicalExpression($config['arguments'], false,
                             SqlLogicalTypeInterface::T_GREATER_EQUAL_TO);
                     });
                 },
-                'sql_less_than_expression_builder_factory'        => function(ContainerInterface $c) {
-                    return new GenericCallbackFactory(function($config) {
+                'sql_less_than_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function ($config) {
                         return new LogicalExpression($config['arguments'], false,
                             SqlLogicalTypeInterface::T_LESS_THAN);
                     });
                 },
-                'sql_less_equal_to_expression_builder_factory'    => function(ContainerInterface $c) {
-                    return new GenericCallbackFactory(function($config) {
+                'sql_less_equal_to_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function ($config) {
                         return new LogicalExpression($config['arguments'], false,
                             SqlLogicalTypeInterface::T_LESS_EQUAL_TO);
                     });

@@ -135,11 +135,12 @@ class ExpressionBuilder
      */
     public function __call($name, $arguments)
     {
-        $key = $this->_getExpressionFactoryKey($name);
+        $key    = $this->_getExpressionFactoryKey($name);
         $config = $this->_getExpressionFactoryConfig($arguments);
 
         try {
             $factory = $this->_containerGet($this->_getDataStore(), $key);
+
             return $factory->make($config);
         } catch (RootException $exception) {
             throw $this->_createInternalException(
