@@ -137,8 +137,7 @@ class WpCqrsModule extends AbstractBaseModule
                     return new ExpressionBuilder($c->get('sql_expression_builder_factories'));
                 },
                 'sql_expression_builder_factories' => function (ContainerInterface $c) {
-                    return $c->get('container_factory')->make([
-                        'definitions' => [
+                    return [
                             'lit'  => $c->get('sql_literal_expression_builder_factory'),
                             'var'  => $c->get('sql_variable_expression_builder_factory'),
                             'ef'   => $c->get('sql_entity_field_expression_builder_factory'),
@@ -151,8 +150,7 @@ class WpCqrsModule extends AbstractBaseModule
                             'ge'   => $c->get('sql_greater_equal_to_expression_builder_factory'),
                             'lt'   => $c->get('sql_less_than_expression_builder_factory'),
                             'le'   => $c->get('sql_less_equal_to_expression_builder_factory'),
-                        ],
-                    ]);
+                    ];
                 },
                 'sql_literal_expression_builder_factory' => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
