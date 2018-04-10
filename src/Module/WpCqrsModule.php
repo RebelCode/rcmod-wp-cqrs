@@ -50,6 +50,12 @@ class WpCqrsModule extends AbstractBaseModule
     {
         return $this->_createContainer(
             [
+                // WordPress' database adapter/connection
+                'wpdb'                                            => function(ContainerInterface $c) {
+                    global $wpdb;
+
+                    return $wpdb;
+                },
                 // Container with all SQL expression templates
                 'sql_expression_template_container'               => function(ContainerInterface $c) {
                     return $c->get('container_factory')->make([
@@ -105,12 +111,6 @@ class WpCqrsModule extends AbstractBaseModule
                 // Master SQL expression template
                 'sql_expression_template'                         => function(ContainerInterface $c) {
                     return new SqlExpressionMasterTemplate($c->get('sql_expression_template_container'));
-                },
-                // WordPress' database adapter/connection
-                'wpdb'                                            => function(ContainerInterface $c) {
-                    global $wpdb;
-
-                    return $wpdb;
                 },
                 // Expression builder
                 'sql_expression_builder'                          => function(ContainerInterface $c) {
