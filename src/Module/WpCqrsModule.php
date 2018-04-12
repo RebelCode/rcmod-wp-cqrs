@@ -80,9 +80,6 @@ class WpCqrsModule extends AbstractBaseModule
                 },
                 // Container with all SQL expression templates
                 'sql_expression_template_container'               => function (ContainerInterface $c) {
-                    $container = $c->get('composite_container_factory');
-                    $factorySet = $c->get('add_capable_list_factory');
-
                     return $c->get('container_factory')->make([
                         'definitions' => [
                             'literal'                      => function (ContainerInterface $c) {
