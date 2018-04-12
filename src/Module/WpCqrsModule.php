@@ -3,10 +3,16 @@
 namespace RebelCode\Storage\Resource\WordPress\Module;
 
 use Dhii\Data\Container\ContainerFactoryInterface;
+use Dhii\Data\Container\ContainerGetCapableTrait;
+use Dhii\Data\Container\ContainerHasCapableTrait;
+use Dhii\Data\Container\CreateContainerExceptionCapableTrait;
+use Dhii\Data\Container\CreateNotFoundExceptionCapableTrait;
+use Dhii\Data\Object\NormalizeKeyCapableTrait;
 use Dhii\Factory\GenericCallbackFactory;
 use Dhii\Storage\Resource\Sql\Expression\SqlLogicalTypeInterface as SqlLogType;
 use Dhii\Storage\Resource\Sql\Expression\SqlOperatorInterface as SqlOp;
 use Dhii\Storage\Resource\Sql\Expression\SqlRelationalTypeInterface as SqlRelType;
+use Dhii\Util\Normalization\NormalizeStringCapableTrait;
 use Dhii\Util\String\StringableInterface as Stringable;
 use Psr\Container\ContainerInterface;
 use RebelCode\Expression\Builder\ExpressionBuilder;
@@ -30,6 +36,36 @@ use RebelCode\Storage\Resource\Sql\Order;
  */
 class WpCqrsModule extends AbstractBaseModule
 {
+    /*
+     * @since [*next-version*]
+     */
+    use ContainerGetCapableTrait;
+
+    /*
+     * @since [*next-version*]
+     */
+    use ContainerHasCapableTrait;
+
+    /*
+     * @since [*next-version*]
+     */
+    use NormalizeKeyCapableTrait;
+
+    /*
+     * @since [*next-version*]
+     */
+    use NormalizeStringCapableTrait;
+
+    /*
+     * @since [*next-version*]
+     */
+    use CreateContainerExceptionCapableTrait;
+
+    /*
+     * @since [*next-version*]
+     */
+    use CreateNotFoundExceptionCapableTrait;
+
     /**
      * Constructor.
      *
@@ -251,7 +287,15 @@ class WpCqrsModule extends AbstractBaseModule
                 },
                 'sql_order_factory'                               => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
-                        return new Order($config['entity'], $config['field'], $config['ascending']);
+                        $field = $this->_containerGet($config, 'field');
+                        $entity = $this->_containerHas($config, 'entity')
+                            ? $this->_containerGet($config, 'entity')
+                            : null;
+                        $ascending = $this->_containerHas($config, 'ascending')
+                            ? $this->_containerGet($config, 'ascending')
+                            : true;
+
+                        return new Order($entity, $field, $ascending);
                     });
                 },
             ]
