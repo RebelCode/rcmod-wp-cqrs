@@ -71,8 +71,8 @@ class WpCqrsModule extends AbstractBaseModule
                     return function ($tables) use ($prefixer) {
                         $prefixed = [];
 
-                        foreach ($tables as $_table => $_alias) {
-                            $prefixed[$prefixer($_table)] = $_alias;
+                        foreach ($tables as $_alias => $_table) {
+                            $prefixed[$_alias] = $prefixer($_table);
                         }
 
                         return $prefixed;
