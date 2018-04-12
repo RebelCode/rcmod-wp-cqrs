@@ -3,7 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/Module" isTestSource="false" packagePrefix="RebelCode\Storage\Resource\WordPress\Module\" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Sql" isTestSource="false" packagePrefix="RebelCode\Storage\Resource\Sql" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Sql" isTestSource="false" packagePrefix="RebelCode\Storage\Resource\Sql\" />
       <sourceFolder url="file://$MODULE_DIR$/src/Expression" isTestSource="false" packagePrefix="RebelCode\Expression\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/codeclimate/php-test-reporter" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
