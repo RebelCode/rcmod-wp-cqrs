@@ -18,7 +18,7 @@ trait FieldAwareTrait
      *
      * @since [*next-version*]
      *
-     * @var string|Stringable
+     * @var string|Stringable|null
      */
     protected $field;
 
@@ -27,7 +27,7 @@ trait FieldAwareTrait
      *
      * @since [*next-version*]
      *
-     * @return string|Stringable The field name.
+     * @return string|Stringable|null The field name.
      */
     protected function _getField()
     {
@@ -39,11 +39,11 @@ trait FieldAwareTrait
      *
      * @since [*next-version*]
      *
-     * @param string|Stringable $field The field name to set.
+     * @param string|Stringable|null $field The field name to set.
      */
     protected function _setField($field)
     {
-        if (is_string($field) || $field instanceof Stringable) {
+        if ($field === null || is_string($field) || $field instanceof Stringable) {
             $this->field = $field;
 
             return;

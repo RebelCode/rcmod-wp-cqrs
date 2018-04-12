@@ -18,7 +18,7 @@ trait EntityAwareTrait
      *
      * @since [*next-version*]
      *
-     * @var string|Stringable
+     * @var string|Stringable|null
      */
     protected $entity;
 
@@ -27,7 +27,7 @@ trait EntityAwareTrait
      *
      * @since [*next-version*]
      *
-     * @return string|Stringable The entity name.
+     * @return string|Stringable|null The entity name.
      */
     protected function _getEntity()
     {
@@ -39,11 +39,11 @@ trait EntityAwareTrait
      *
      * @since [*next-version*]
      *
-     * @param string|Stringable $entity The entity name to set.
+     * @param string|Stringable|null $entity The entity name to set.
      */
     protected function _setEntity($entity)
     {
-        if (is_string($entity) || $entity instanceof Stringable) {
+        if ($entity === null || is_string($entity) || $entity instanceof Stringable) {
             $this->entity = $entity;
 
             return;
