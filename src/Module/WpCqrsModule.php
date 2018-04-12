@@ -92,12 +92,12 @@ class WpCqrsModule extends AbstractBaseModule
                                 return new SqlReferenceTermTemplate();
                             },
                             SqlLogType::T_AND              => function (ContainerInterface $c) {
-                                return new SqlOperatorExpressionTemplate(SqlOp::OP_AND,
-                                    $c->get('sql_expression_template_container'));
+                                return new SqlOperatorExpressionTemplate(
+                                    SqlOp::OP_AND, $c->get('sql_expression_template_container'));
                             },
                             SqlLogType::T_OR               => function (ContainerInterface $c) {
-                                return new SqlOperatorExpressionTemplate(SqlOp::OP_OR,
-                                    $c->get('sql_expression_template_container'));
+                                return new SqlOperatorExpressionTemplate(
+                                    SqlOp::OP_OR, $c->get('sql_expression_template_container'));
                             },
                             SqlLogType::T_NOT              => function (ContainerInterface $c) {
                                 return new SqlFunctionExpressionTemplate(
