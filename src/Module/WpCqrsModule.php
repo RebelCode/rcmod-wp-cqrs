@@ -21,6 +21,7 @@ use RebelCode\Expression\Renderer\Sql\SqlReferenceTermTemplate;
 use RebelCode\Expression\SqlExpressionMasterTemplate;
 use RebelCode\Expression\VariableTerm;
 use RebelCode\Modular\Module\AbstractBaseModule;
+use RebelCode\Storage\Resource\Sql\Order;
 
 /**
  * WordPress CQRS module class.
@@ -233,6 +234,11 @@ class WpCqrsModule extends AbstractBaseModule
                             SqlLogicalTypeInterface::T_LESS_EQUAL_TO);
                     });
                 },
+                'sql_order_factory' => function(ContainerInterface $c) {
+                    return new GenericCallbackFactory(function($config) {
+                        return new Order($config['entity'], $config['field'], $config['ascending']);
+                    });
+                }
             ]
         );
     }
