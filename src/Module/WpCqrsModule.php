@@ -211,37 +211,49 @@ class WpCqrsModule extends AbstractBaseModule
                 },
                 'sql_literal_expression_builder_factory'          => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
-                        return new LiteralTerm($config['arguments'][0], 'literal');
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        return new LiteralTerm($arguments[0], 'literal');
                     });
                 },
                 'sql_variable_expression_builder_factory'         => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
-                        return new VariableTerm($config['arguments'][0], 'variable');
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        return new VariableTerm($arguments[0], 'variable');
                     });
                 },
                 'sql_entity_field_expression_builder_factory'     => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
-                        return new EntityFieldTerm($config['arguments'][0], $config['arguments'][1], 'entity_field');
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        return new EntityFieldTerm($arguments[0], $arguments[1], 'entity_field');
                     });
                 },
                 'sql_and_expression_builder_factory'              => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
-                        return new LogicalExpression($config['arguments'], false, SqlLogType::T_AND);
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        return new LogicalExpression($arguments, false, SqlLogType::T_AND);
                     });
                 },
                 'sql_or_expression_builder_factory'               => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
-                        return new LogicalExpression($config['arguments'], false, SqlLogType::T_OR);
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        return new LogicalExpression($arguments, false, SqlLogType::T_OR);
                     });
                 },
                 'sql_not_expression_builder_factory'              => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
-                        return new LogicalExpression($config['arguments'], false, SqlLogType::T_NOT);
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        return new LogicalExpression($arguments, false, SqlLogType::T_NOT);
                     });
                 },
                 'sql_like_expression_builder_factory'             => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
-                        $arguments = $config['arguments'];
+                        $arguments = $this->_containerGet($config, 'arguments');
                         $negation = is_bool($arguments[0])
                             ? $arguments[0]
                             : false;
@@ -254,7 +266,7 @@ class WpCqrsModule extends AbstractBaseModule
                 },
                 'sql_equal_to_expression_builder_factory'         => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
-                        $arguments = $config['arguments'];
+                        $arguments = $this->_containerGet($config, 'arguments');
                         $negation = is_bool($arguments[0])
                             ? $arguments[0]
                             : false;
@@ -267,22 +279,30 @@ class WpCqrsModule extends AbstractBaseModule
                 },
                 'sql_greater_than_expression_builder_factory'     => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
-                        return new LogicalExpression($config['arguments'], false, SqlLogType::T_GREATER_THAN);
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        return new LogicalExpression($arguments, false, SqlLogType::T_GREATER_THAN);
                     });
                 },
                 'sql_greater_equal_to_expression_builder_factory' => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
-                        return new LogicalExpression($config['arguments'], false, SqlLogType::T_GREATER_EQUAL_TO);
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        return new LogicalExpression($arguments, false, SqlLogType::T_GREATER_EQUAL_TO);
                     });
                 },
                 'sql_less_than_expression_builder_factory'        => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
-                        return new LogicalExpression($config['arguments'], false, SqlLogType::T_LESS_THAN);
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        return new LogicalExpression($arguments, false, SqlLogType::T_LESS_THAN);
                     });
                 },
                 'sql_less_equal_to_expression_builder_factory'    => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
-                        return new LogicalExpression($config['arguments'], false, SqlLogType::T_LESS_EQUAL_TO);
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        return new LogicalExpression($arguments, false, SqlLogType::T_LESS_EQUAL_TO);
                     });
                 },
                 'sql_order_factory'                               => function (ContainerInterface $c) {
