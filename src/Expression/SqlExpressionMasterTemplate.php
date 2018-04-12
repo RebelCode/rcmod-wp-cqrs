@@ -1,6 +1,6 @@
 <?php
 
-namespace RebelCode\Storage\Resource\WordPress\Module;
+namespace RebelCode\Expression;
 
 use Dhii\Expression\Renderer\AbstractBaseSelfDelegateExpressionTemplate;
 use Psr\Container\ContainerInterface;

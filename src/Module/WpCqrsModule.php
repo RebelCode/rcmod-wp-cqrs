@@ -18,6 +18,7 @@ use RebelCode\Expression\Renderer\Sql\SqlFunctionExpressionTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlLiteralTermTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlOperatorExpressionTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlReferenceTermTemplate;
+use RebelCode\Expression\SqlExpressionMasterTemplate;
 use RebelCode\Expression\VariableTerm;
 use RebelCode\Modular\Module\AbstractBaseModule;
 
