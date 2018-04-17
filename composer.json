@@ -11,23 +11,14 @@
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Dhii/expression-renderer-base"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCode/sql-expression-renderer"
-        }
-    ],
     "require": {
         "php": "^5.4 | ^7.0",
         "rebelcode/modular": "dev-task/initial-classes",
         "rebelcode/wp-cqrs-resource-models": "dev-task/initial-classes",
         "rebelcode/sql-expression-renderer": "dev-task/initial-classes",
         "dhii/data-object-abstract": "^0.1-alpha1",
-        "dhii/factory-base": "dev-develop"
+        "dhii/factory-base": "dev-develop",
+        "johnpbloch/wordpress-core": "^4.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",

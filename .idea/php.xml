@@ -87,6 +87,7 @@
       <path value="$PROJECT_DIR$/vendor/dhii/validation-abstract" />
       <path value="$PROJECT_DIR$/vendor/dhii/args-list-validation" />
       <path value="$PROJECT_DIR$/vendor/dhii/collections-interface" />
+      <path value="$PROJECT_DIR$/vendor/johnpbloch/wordpress-core" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />
