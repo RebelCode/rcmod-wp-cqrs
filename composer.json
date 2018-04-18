@@ -17,7 +17,7 @@
         "rebelcode/wp-cqrs-resource-models": "dev-task/initial-classes",
         "rebelcode/sql-expression-renderer": "dev-task/initial-classes",
         "dhii/data-object-abstract": "^0.1-alpha1",
-        "dhii/factory-base": "dev-develop",
+        "dhii/factory-base": "^0.1-alpha1",
         "johnpbloch/wordpress-core": "^4.0"
     },
     "require-dev": {
