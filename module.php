@@ -10,8 +10,8 @@ return function (ContainerInterface $c) {
     return new WpCqrsModule(
         RC_WP_CQRS_MODULE_KEY,
         [],
-        $c->get('container_factory'),
         $c->get('config_factory'),
+        $c->get('container_factory'),
         $c->get('composite_container_factory')
     );
 };
