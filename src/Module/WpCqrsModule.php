@@ -230,9 +230,9 @@ class WpCqrsModule extends AbstractBaseModule
                         'like' => $c->get('sql_like_expression_builder_factory'),
                         'eq'   => $c->get('sql_equal_to_expression_builder_factory'),
                         'gt'   => $c->get('sql_greater_than_expression_builder_factory'),
-                        'ge'   => $c->get('sql_greater_equal_to_expression_builder_factory'),
+                        'gte'  => $c->get('sql_greater_equal_to_expression_builder_factory'),
                         'lt'   => $c->get('sql_less_than_expression_builder_factory'),
-                        'le'   => $c->get('sql_less_equal_to_expression_builder_factory'),
+                        'lte'  => $c->get('sql_less_equal_to_expression_builder_factory'),
                     ];
                 },
                 /*
