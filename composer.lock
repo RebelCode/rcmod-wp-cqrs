@@ -2204,12 +2204,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/modular.git",
-                "reference": "19d062be6698d3a1fe2375f84ca9e67faf18ab43"
+                "reference": "45929be986400f3162eeca7bc93db9a4c861a900"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/modular/zipball/19d062be6698d3a1fe2375f84ca9e67faf18ab43",
-                "reference": "19d062be6698d3a1fe2375f84ca9e67faf18ab43",
+                "url": "https://api.github.com/repos/RebelCode/modular/zipball/45929be986400f3162eeca7bc93db9a4c861a900",
+                "reference": "45929be986400f3162eeca7bc93db9a4c861a900",
                 "shasum": ""
             },
             "require": {
@@ -2256,7 +2256,7 @@
                 }
             ],
             "description": "A module system.",
-            "time": "2018-04-18T15:42:50+00:00"
+            "time": "2018-04-18T16:59:00+00:00"
         },
         {
             "name": "rebelcode/module-iterator-abstract",
@@ -2428,12 +2428,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/wp-cqrs-resource-models.git",
-                "reference": "6a493750c9013ccb64b3b32cbd88173f33f1d39c"
+                "reference": "eadb0cd21a6bf2ec9167a9e8a2cf6f0a323a3266"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/wp-cqrs-resource-models/zipball/6a493750c9013ccb64b3b32cbd88173f33f1d39c",
-                "reference": "6a493750c9013ccb64b3b32cbd88173f33f1d39c",
+                "url": "https://api.github.com/repos/RebelCode/wp-cqrs-resource-models/zipball/eadb0cd21a6bf2ec9167a9e8a2cf6f0a323a3266",
+                "reference": "eadb0cd21a6bf2ec9167a9e8a2cf6f0a323a3266",
                 "shasum": ""
             },
             "require": {
@@ -2484,7 +2484,7 @@
                 }
             ],
             "description": "Functionality for WordPress CQRS resource models.",
-            "time": "2018-04-12T10:56:30+00:00"
+            "time": "2018-04-24T18:29:26+00:00"
         }
     ],
     "packages-dev": [
