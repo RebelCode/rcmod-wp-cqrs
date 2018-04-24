@@ -9,8 +9,6 @@ use InvalidArgumentException;
 /**
  * Provides awareness of an expression builder.
  *
- * @todo  Change expression builder type, when an interface for it has been decided
- *
  * @since [*next-version*]
  */
 trait ExpressionBuilderAwareTrait
@@ -20,7 +18,7 @@ trait ExpressionBuilderAwareTrait
      *
      * @since [*next-version*]
      *
-     * @var ExpressionBuilder|null
+     * @var ExpressionBuilderInterface|null
      */
     protected $exprBuilder;
 
@@ -29,7 +27,7 @@ trait ExpressionBuilderAwareTrait
      *
      * @since [*next-version*]
      *
-     * @return ExpressionBuilder|null The expression builder instance, if any.
+     * @return ExpressionBuilderInterface|null The expression builder instance, if any.
      */
     protected function _getExprBuilder()
     {
@@ -41,11 +39,11 @@ trait ExpressionBuilderAwareTrait
      *
      * @since [*next-version*]
      *
-     * @param ExpressionBuilder|null $exprBuilder The expression builder instance, if any.
+     * @param ExpressionBuilderInterface|null $exprBuilder The expression builder instance, if any.
      */
     protected function _setExprBuilder($exprBuilder)
     {
-        if ($exprBuilder !== null && !($exprBuilder instanceof ExpressionBuilder)) {
+        if ($exprBuilder !== null && !($exprBuilder instanceof ExpressionBuilderInterface)) {
             throw $this->_createInvalidArgumentException(
                 $this->__('Argument is not an expression builder'), null, null, $exprBuilder
             );
