@@ -30,7 +30,7 @@ use stdClass;
  *
  * @since [*next-version*]
  */
-class ExpressionBuilder
+class ExpressionBuilder implements ExpressionBuilderInterface
 {
     /*
      * Provides awareness of a container data store.
@@ -122,21 +122,16 @@ class ExpressionBuilder
     }
 
     /**
-     * Magic invocation builder method: maps the called method name to a factory and creates an expression instance.
+     * {@inheritdoc}
      *
      * @since [*next-version*]
      *
-     * @param string $name      The name of the called method.
-     * @param array  $arguments The arguments given to the called method.
-     *
-     * @throws InternalException If an error occurred while mapping to an expression factory.
-     *
-     * @return TermInterface The created expression.
+     * @throws InternalException If a problem occurred while invoking a factory.
      */
-    public function __call($name, $arguments)
+    public function build($type, $config = [])
     {
-        $key    = $this->_getExpressionFactoryKey($name);
-        $config = $this->_getExpressionFactoryConfig($arguments);
+        $key    = $this->_getExpressionFactoryKey($type);
+        $config = $this->_getExpressionFactoryConfig($config);
 
         try {
             $factory = $this->_containerGet($this->_getDataStore(), $key);
@@ -149,6 +144,18 @@ class ExpressionBuilder
                 $exception
             );
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     *
+     * @throws InternalException If a problem occurred while invoking a factory.
+     */
+    public function __call($name, $arguments)
+    {
+        return $this->build($name, $arguments);
     }
 
     /**
