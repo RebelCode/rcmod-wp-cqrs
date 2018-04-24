@@ -20,7 +20,7 @@ trait ExpressionBuilderAwareTrait
      *
      * @var ExpressionBuilderInterface|null
      */
-    protected $exprBuilder;
+    protected $expressionBuilder;
 
     /**
      * Retrieves the expression builder associated with this instance.
@@ -29,9 +29,9 @@ trait ExpressionBuilderAwareTrait
      *
      * @return ExpressionBuilderInterface|null The expression builder instance, if any.
      */
-    protected function _getExprBuilder()
+    protected function _getExpressionBuilder()
     {
-        return $this->exprBuilder;
+        return $this->expressionBuilder;
     }
 
     /**
@@ -39,17 +39,17 @@ trait ExpressionBuilderAwareTrait
      *
      * @since [*next-version*]
      *
-     * @param ExpressionBuilderInterface|null $exprBuilder The expression builder instance, if any.
+     * @param ExpressionBuilderInterface|null $expressionBuilder The expression builder instance, if any.
      */
-    protected function _setExprBuilder($exprBuilder)
+    protected function _setExpressionBuilder($expressionBuilder)
     {
-        if ($exprBuilder !== null && !($exprBuilder instanceof ExpressionBuilderInterface)) {
+        if ($expressionBuilder !== null && !($expressionBuilder instanceof ExpressionBuilderInterface)) {
             throw $this->_createInvalidArgumentException(
-                $this->__('Argument is not an expression builder'), null, null, $exprBuilder
+                $this->__('Argument is not an expression builder'), null, null, $expressionBuilder
             );
         }
 
-        $this->exprBuilder = $exprBuilder;
+        $this->expressionBuilder = $expressionBuilder;
     }
 
     /**
