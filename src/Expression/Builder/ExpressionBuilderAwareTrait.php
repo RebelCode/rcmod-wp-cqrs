@@ -45,6 +45,12 @@ trait ExpressionBuilderAwareTrait
      */
     protected function _setExprBuilder($exprBuilder)
     {
+        if ($exprBuilder !== null && !($exprBuilder instanceof ExpressionBuilder)) {
+            throw $this->_createInvalidArgumentException(
+                $this->__('Argument is not an expression builder'), null, null, $exprBuilder
+            );
+        }
+
         $this->exprBuilder = $exprBuilder;
     }
 
