@@ -132,7 +132,7 @@ class WpCqrsModule extends AbstractBaseModule
                  */
                 'sql_expression_template_container'               => function (ContainerInterface $c) {
                     return $c->get('container_factory')->make([
-                        'definitions' => [
+                        ContainerFactoryInterface::K_DATA => [
                             'literal'                      => function (ContainerInterface $c) {
                                 return new SqlLiteralTermTemplate();
                             },

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b74920333c33e4495a8e74387c186b3",
+    "content-hash": "0b4d1761546af25c306292bdb807c5b2",
     "packages": [
         {
             "name": "dhii/args-list-validation",
@@ -373,12 +373,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/data-container-interface.git",
-                "reference": "63fbd3215c211c4d45a0e39c33a8ca9b8b4fe2fb"
+                "reference": "b9767d34214fa4d73f10989fca4ad54196a7b7f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/data-container-interface/zipball/63fbd3215c211c4d45a0e39c33a8ca9b8b4fe2fb",
-                "reference": "63fbd3215c211c4d45a0e39c33a8ca9b8b4fe2fb",
+                "url": "https://api.github.com/repos/Dhii/data-container-interface/zipball/b9767d34214fa4d73f10989fca4ad54196a7b7f3",
+                "reference": "b9767d34214fa4d73f10989fca4ad54196a7b7f3",
                 "shasum": ""
             },
             "require": {
@@ -419,7 +419,7 @@
                 }
             ],
             "description": "Interfaces for working with data containers",
-            "time": "2018-03-26T13:27:27+00:00"
+            "time": "2018-04-26T09:50:30+00:00"
         },
         {
             "name": "dhii/data-key-value-aware-abstract",
@@ -2204,12 +2204,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/modular.git",
-                "reference": "45929be986400f3162eeca7bc93db9a4c861a900"
+                "reference": "4bec550cff80cb91426cc92261079d3288a8edaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/modular/zipball/45929be986400f3162eeca7bc93db9a4c861a900",
-                "reference": "45929be986400f3162eeca7bc93db9a4c861a900",
+                "url": "https://api.github.com/repos/RebelCode/modular/zipball/4bec550cff80cb91426cc92261079d3288a8edaa",
+                "reference": "4bec550cff80cb91426cc92261079d3288a8edaa",
                 "shasum": ""
             },
             "require": {
@@ -2256,7 +2256,7 @@
                 }
             ],
             "description": "A module system.",
-            "time": "2018-04-18T16:59:00+00:00"
+            "time": "2018-04-26T09:56:48+00:00"
         },
         {
             "name": "rebelcode/module-iterator-abstract",
@@ -2312,12 +2312,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/sql-cqrs-resource-models-abstract.git",
-                "reference": "509a9ac4a7b8812ea3c4477246fa55bf44c6b17b"
+                "reference": "92b26b2ee2740d0754c3be74d0453813580cfa53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/sql-cqrs-resource-models-abstract/zipball/509a9ac4a7b8812ea3c4477246fa55bf44c6b17b",
-                "reference": "509a9ac4a7b8812ea3c4477246fa55bf44c6b17b",
+                "url": "https://api.github.com/repos/RebelCode/sql-cqrs-resource-models-abstract/zipball/92b26b2ee2740d0754c3be74d0453813580cfa53",
+                "reference": "92b26b2ee2740d0754c3be74d0453813580cfa53",
                 "shasum": ""
             },
             "require": {
@@ -2357,7 +2357,7 @@
                 }
             ],
             "description": "Abstract functionality for SQL CQRS resource models.",
-            "time": "2018-04-11T11:11:49+00:00"
+            "time": "2018-04-25T17:23:18+00:00"
         },
         {
             "name": "rebelcode/sql-expression-renderer",
@@ -2428,12 +2428,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/wp-cqrs-resource-models.git",
-                "reference": "eadb0cd21a6bf2ec9167a9e8a2cf6f0a323a3266"
+                "reference": "b4dbd15a9cf21e6924e01a253865686cced18d27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/wp-cqrs-resource-models/zipball/eadb0cd21a6bf2ec9167a9e8a2cf6f0a323a3266",
-                "reference": "eadb0cd21a6bf2ec9167a9e8a2cf6f0a323a3266",
+                "url": "https://api.github.com/repos/RebelCode/wp-cqrs-resource-models/zipball/b4dbd15a9cf21e6924e01a253865686cced18d27",
+                "reference": "b4dbd15a9cf21e6924e01a253865686cced18d27",
                 "shasum": ""
             },
             "require": {
@@ -2484,7 +2484,7 @@
                 }
             ],
             "description": "Functionality for WordPress CQRS resource models.",
-            "time": "2018-04-24T18:29:26+00:00"
+            "time": "2018-04-25T08:09:44+00:00"
         }
     ],
     "packages-dev": [
@@ -4340,7 +4340,8 @@
     "stability-flags": {
         "rebelcode/modular": 20,
         "rebelcode/wp-cqrs-resource-models": 20,
-        "rebelcode/sql-expression-renderer": 20
+        "rebelcode/sql-expression-renderer": 20,
+        "dhii/data-container-interface": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
