@@ -233,6 +233,7 @@ class WpCqrsModule extends AbstractBaseModule
                         'gte'  => $c->get('sql_greater_equal_to_expression_builder_factory'),
                         'lt'   => $c->get('sql_less_than_expression_builder_factory'),
                         'lte'  => $c->get('sql_less_equal_to_expression_builder_factory'),
+                        'in'   => $c->get('sql_in_expression_builder_factory')
                     ];
                 },
                 /*
@@ -389,6 +390,18 @@ class WpCqrsModule extends AbstractBaseModule
                         $arguments = $this->_containerGet($config, 'arguments');
 
                         return new LogicalExpression($arguments, false, SqlLogType::T_LESS_EQUAL_TO);
+                    });
+                },
+                /*
+                 * The SQL "IN" expression builder factory service.
+                 *
+                 * @since [*next-version*]
+                 */
+                'sql_in_expression_builder_factory'    => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function ($config) {
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        return new LogicalExpression($arguments, false, SqlLogType::T_IN);
                     });
                 },
 
