@@ -111,20 +111,20 @@
         },
         {
             "name": "dhii/collections-interface",
-            "version": "v0.2-alpha4",
+            "version": "v0.2-alpha5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/collections-interface.git",
-                "reference": "82ee5552d6ccf300ef85d57866c88b2a7a74fbd5"
+                "reference": "b5e58ba2fd43a11356387eebae0379209b769f2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/collections-interface/zipball/82ee5552d6ccf300ef85d57866c88b2a7a74fbd5",
-                "reference": "82ee5552d6ccf300ef85d57866c88b2a7a74fbd5",
+                "url": "https://api.github.com/repos/Dhii/collections-interface/zipball/b5e58ba2fd43a11356387eebae0379209b769f2e",
+                "reference": "b5e58ba2fd43a11356387eebae0379209b769f2e",
                 "shasum": ""
             },
             "require": {
-                "dhii/data-container-interface": "^0.1 | ^0.2",
+                "dhii/data-container-interface": "^0.2-alpha3",
                 "php": "^5.3 | ^7.0",
                 "psr/container": "^1.0"
             },
@@ -156,7 +156,7 @@
                 }
             ],
             "description": "A highly ISP-compliant collection of interfaces that represent maps and lists.",
-            "time": "2018-04-09T10:46:45+00:00"
+            "time": "2018-04-26T13:04:16+00:00"
         },
         {
             "name": "dhii/container-helper-base",
@@ -2365,12 +2365,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/sql-expression-renderer.git",
-                "reference": "3a523e6607c4b2614544e250165b0f41305a0bf8"
+                "reference": "00230c8d216c23f14052975283d8dcb385ffcc2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/sql-expression-renderer/zipball/3a523e6607c4b2614544e250165b0f41305a0bf8",
-                "reference": "3a523e6607c4b2614544e250165b0f41305a0bf8",
+                "url": "https://api.github.com/repos/RebelCode/sql-expression-renderer/zipball/00230c8d216c23f14052975283d8dcb385ffcc2b",
+                "reference": "00230c8d216c23f14052975283d8dcb385ffcc2b",
                 "shasum": ""
             },
             "require": {
@@ -2392,20 +2392,7 @@
                     "RebelCode\\Expression\\Renderer\\Sql\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "RebelCode\\Expression\\Renderer\\Sql\\FuncTest\\": "test/functional",
-                    "RebelCode\\Expression\\Renderer\\Sql\\UnitTest\\": "test/unit"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ],
-                "csfix": [
-                    "php-cs-fixer fix -vvv"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0"
             ],
@@ -2416,11 +2403,7 @@
                 }
             ],
             "description": "A library for rendering SQL conditions using expressions.",
-            "support": {
-                "source": "https://github.com/RebelCode/sql-expression-renderer/tree/task/initial-classes",
-                "issues": "https://github.com/RebelCode/sql-expression-renderer/issues"
-            },
-            "time": "2018-04-09T18:58:27+00:00"
+            "time": "2018-04-27T12:03:29+00:00"
         },
         {
             "name": "rebelcode/wp-cqrs-resource-models",
@@ -2428,12 +2411,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/wp-cqrs-resource-models.git",
-                "reference": "b4dbd15a9cf21e6924e01a253865686cced18d27"
+                "reference": "83caf7eefcc4e193ad11a6bbf8529bba4c1de4d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/wp-cqrs-resource-models/zipball/b4dbd15a9cf21e6924e01a253865686cced18d27",
-                "reference": "b4dbd15a9cf21e6924e01a253865686cced18d27",
+                "url": "https://api.github.com/repos/RebelCode/wp-cqrs-resource-models/zipball/83caf7eefcc4e193ad11a6bbf8529bba4c1de4d3",
+                "reference": "83caf7eefcc4e193ad11a6bbf8529bba4c1de4d3",
                 "shasum": ""
             },
             "require": {
@@ -2484,7 +2467,7 @@
                 }
             ],
             "description": "Functionality for WordPress CQRS resource models.",
-            "time": "2018-04-25T08:09:44+00:00"
+            "time": "2018-04-26T10:47:53+00:00"
         }
     ],
     "packages-dev": [

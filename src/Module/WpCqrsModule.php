@@ -22,6 +22,7 @@ use RebelCode\Expression\LiteralTerm;
 use RebelCode\Expression\LogicalExpression;
 use RebelCode\Expression\Renderer\Sql\SqlBetweenExpressionTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlFunctionExpressionTemplate;
+use RebelCode\Expression\Renderer\Sql\SqlGenericFunctionExpressionTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlLiteralTermTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlOperatorExpressionTemplate;
 use RebelCode\Expression\Renderer\Sql\SqlReferenceTermTemplate;
@@ -145,6 +146,9 @@ class WpCqrsModule extends AbstractBaseModule
                             },
                             'entity_field'                 => function (ContainerInterface $c) {
                                 return new SqlReferenceTermTemplate();
+                            },
+                            SqlExpressionMasterTemplate::K_GENERIC_FN_TEMPLATE => function(ContainerInterface $c) {
+                                return new SqlGenericFunctionExpressionTemplate($c->get('sql_expression_template_container'));
                             },
                             SqlLogType::T_AND              => function (ContainerInterface $c) {
                                 return new SqlOperatorExpressionTemplate(
