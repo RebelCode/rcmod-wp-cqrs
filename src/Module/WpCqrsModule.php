@@ -17,6 +17,7 @@ use Dhii\Util\String\StringableInterface as Stringable;
 use Psr\Container\ContainerInterface;
 use RebelCode\Expression\Builder\ExpressionBuilder;
 use RebelCode\Expression\EntityFieldTerm;
+use RebelCode\Expression\Expression;
 use RebelCode\Expression\LiteralTerm;
 use RebelCode\Expression\LogicalExpression;
 use RebelCode\Expression\Renderer\Sql\SqlBetweenExpressionTemplate;
@@ -268,7 +269,7 @@ class WpCqrsModule extends AbstractBaseModule
                                 : $arguments;
                         }
 
-                        return new LiteralTerm($values, 'set');
+                        return new Expression($values, 'set');
                     });
                 },
                 /*
