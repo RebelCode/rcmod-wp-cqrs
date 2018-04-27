@@ -138,7 +138,7 @@ class WpCqrsModule extends AbstractBaseModule
                                 return new SqlLiteralTermTemplate();
                             },
                             'set'                          => function (ContainerInterface $c) {
-                                return new SqlFunctionExpressionTemplate('', $c);
+                                return new SqlFunctionExpressionTemplate('', $c->get('sql_expression_template_container'));
                             },
                             'variable'                     => function (ContainerInterface $c) {
                                 return new SqlReferenceTermTemplate();
