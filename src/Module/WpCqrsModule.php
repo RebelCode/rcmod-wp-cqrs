@@ -243,6 +243,7 @@ class WpCqrsModule extends AbstractBaseModule
                         'lte'  => $c->get('sql_less_equal_to_expression_builder_factory'),
                         'in'   => $c->get('sql_in_expression_builder_factory'),
                         'set'  => $c->get('sql_set_expression_builder_factory'),
+                        'fn'   => $c->get('sql_fn_expression_builder_factory')
                     ];
                 },
                 /*
@@ -434,6 +435,28 @@ class WpCqrsModule extends AbstractBaseModule
                         $arguments = $this->_containerGet($config, 'arguments');
 
                         return new LogicalExpression($arguments, false, SqlLogType::T_IN);
+                    });
+                },
+                /*
+                 * The SQL generic function expression builder factory service.
+                 *
+                 * @since [*next-version*]
+                 */
+                'sql_fn_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function ($config) {
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        if (count($arguments) === 0) {
+                            throw $this->_createOutOfRangeException(
+                                $this->__('Must have at least a function name argument for SQL function expression factory'),
+                                null, null, $arguments
+                            );
+                        }
+
+                        $type = 'sql_fn_' . $arguments[0];
+                        $terms = array_slice($arguments, 1);
+
+                        return new Expression($terms, $type);
                     });
                 },
 
