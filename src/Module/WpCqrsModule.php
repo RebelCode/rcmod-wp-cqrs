@@ -260,8 +260,15 @@ class WpCqrsModule extends AbstractBaseModule
                 'sql_set_expression_builder_factory'    => function (ContainerInterface $c) {
                     return new GenericCallbackFactory(function ($config) {
                         $arguments = $this->_containerGet($config, 'arguments');
+                        $values    = [];
 
-                        return new LiteralTerm($arguments[0], 'set');
+                        if (count($arguments) > 0) {
+                            $values = is_array($arguments[0])
+                                ? $arguments[0]
+                                : $arguments;
+                        }
+
+                        return new LiteralTerm($values, 'set');
                     });
                 },
                 /*
