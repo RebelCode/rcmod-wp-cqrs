@@ -136,6 +136,9 @@ class WpCqrsModule extends AbstractBaseModule
                             'literal'                      => function (ContainerInterface $c) {
                                 return new SqlLiteralTermTemplate();
                             },
+                            'set'                          => function (ContainerInterface $c) {
+                                return new SqlFunctionExpressionTemplate('', $c);
+                            },
                             'variable'                     => function (ContainerInterface $c) {
                                 return new SqlReferenceTermTemplate();
                             },
@@ -233,7 +236,8 @@ class WpCqrsModule extends AbstractBaseModule
                         'gte'  => $c->get('sql_greater_equal_to_expression_builder_factory'),
                         'lt'   => $c->get('sql_less_than_expression_builder_factory'),
                         'lte'  => $c->get('sql_less_equal_to_expression_builder_factory'),
-                        'in'   => $c->get('sql_in_expression_builder_factory')
+                        'in'   => $c->get('sql_in_expression_builder_factory'),
+                        'set'  => $c->get('sql_set_expression_builder_factory')
                     ];
                 },
                 /*
@@ -246,6 +250,18 @@ class WpCqrsModule extends AbstractBaseModule
                         $arguments = $this->_containerGet($config, 'arguments');
 
                         return new LiteralTerm($arguments[0], 'literal');
+                    });
+                },
+                /*
+                 * The SQL literal set expression builder factory service.
+                 *
+                 * @since [*next-version*]
+                 */
+                'sql_set_expression_builder_factory'    => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function ($config) {
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        return new LiteralTerm($arguments[0], 'set');
                     });
                 },
                 /*
