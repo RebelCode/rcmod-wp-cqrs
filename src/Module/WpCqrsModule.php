@@ -259,7 +259,7 @@ class WpCqrsModule extends AbstractBaseModule
                  * @since [*next-version*]
                  */
                 'sql_set_expression_builder_factory'    => function (ContainerInterface $c) {
-                    return new GenericCallbackFactory(function ($config) {
+                    return new GenericCallbackFactory(function ($config) use ($c) {
                         $arguments = $this->_containerGet($config, 'arguments');
                         $values    = [];
 
@@ -269,7 +269,11 @@ class WpCqrsModule extends AbstractBaseModule
                                 : $arguments;
                         }
 
-                        return new Expression($values, 'set');
+                        $terms = array_map(function($value) use ($c) {
+                            return $c->get('sql_expression_builder')->lit($value);
+                        }, $values);
+
+                        return new Expression($terms, 'set');
                     });
                 },
                 /*
