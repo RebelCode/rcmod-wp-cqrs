@@ -44,7 +44,7 @@ class SqlExpressionMasterTemplate extends AbstractBaseSelfDelegateExpressionTemp
     {
         $type = $term->getType();
 
-        if (stripos($type, SqlGenericFunctionExpressionTemplate::PREFIX)) {
+        if (stripos($type, SqlGenericFunctionExpressionTemplate::PREFIX) === 0) {
             return $this->_getTermTypeRenderer(static::K_GENERIC_FN_TEMPLATE);
         }
 
