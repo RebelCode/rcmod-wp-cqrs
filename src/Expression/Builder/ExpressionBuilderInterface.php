@@ -30,7 +30,6 @@ interface ExpressionBuilderInterface
      * Builds an expression based on the called method name and the arguments given to it.
      *
      * @see   ExpressionBuilderInterface::build()
-     *
      * @since [*next-version*]
      *
      * @param string $name      The called method name - corresponds to the expression type to build.
