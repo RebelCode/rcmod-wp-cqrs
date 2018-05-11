@@ -47,7 +47,6 @@
       <path value="$PROJECT_DIR$/vendor/dhii/evaluable-interface" />
       <path value="$PROJECT_DIR$/vendor/dhii/file-finder-abstract" />
       <path value="$PROJECT_DIR$/vendor/dhii/expression-renderer-interface" />
-      <path value="$PROJECT_DIR$/vendor/dhii/output-renderer-abstract" />
       <path value="$PROJECT_DIR$/vendor/dhii/output-renderer-base" />
       <path value="$PROJECT_DIR$/vendor/dhii/invocable-interface" />
       <path value="$PROJECT_DIR$/vendor/dhii/output-renderer-interface" />
@@ -72,7 +71,6 @@
       <path value="$PROJECT_DIR$/vendor/dhii/module-interface" />
       <path value="$PROJECT_DIR$/vendor/dhii/exception-interface" />
       <path value="$PROJECT_DIR$/vendor/dhii/psr-14" />
-      <path value="$PROJECT_DIR$/vendor/dhii/modular-interface" />
       <path value="$PROJECT_DIR$/vendor/dhii/i18n-helper-base" />
       <path value="$PROJECT_DIR$/vendor/dhii/i18n-interface" />
       <path value="$PROJECT_DIR$/vendor/dhii/validation-interface" />
@@ -88,6 +86,8 @@
       <path value="$PROJECT_DIR$/vendor/dhii/args-list-validation" />
       <path value="$PROJECT_DIR$/vendor/dhii/collections-interface" />
       <path value="$PROJECT_DIR$/vendor/johnpbloch/wordpress-core" />
+      <path value="$PROJECT_DIR$/vendor/dhii/config-interface" />
+      <path value="$PROJECT_DIR$/vendor/dhii/output-renderer-abstract" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />
