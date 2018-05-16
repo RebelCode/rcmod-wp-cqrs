@@ -44,8 +44,9 @@ class SqlExpressionMasterTemplate extends AbstractBaseSelfDelegateExpressionTemp
     {
         $type = $term->getType();
 
+        // Detect generic function prefix and use generic function template as the type
         if (stripos($type, SqlGenericFunctionExpressionTemplate::PREFIX) === 0) {
-            return $this->_getTermTypeRenderer(static::K_GENERIC_FN_TEMPLATE);
+            $type = static::K_GENERIC_FN_TEMPLATE;
         }
 
         return $this->_getTermTypeRenderer($type);
