@@ -133,80 +133,80 @@ class WpCqrsModule extends AbstractBaseModule
                  * @since [*next-version*]
                  */
                 'sql_expression_template_container' => function (ContainerInterface $c) {
-                    return $c->get('container_factory')->make([
-                        ContainerFactoryInterface::K_DATA => [
-                            'literal' => function (ContainerInterface $c) {
-                                return new SqlLiteralTermTemplate();
-                            },
-                            'set' => function (ContainerInterface $c) {
-                                return new SqlFunctionExpressionTemplate('', $c->get('sql_expression_template_container'));
-                            },
-                            'variable' => function (ContainerInterface $c) {
-                                return new SqlReferenceTermTemplate();
-                            },
-                            'entity_field' => function (ContainerInterface $c) {
-                                return new SqlReferenceTermTemplate();
-                            },
-                            SqlExpressionMasterTemplate::K_GENERIC_FN_TEMPLATE => function (ContainerInterface $c) {
-                                return new SqlGenericFunctionExpressionTemplate($c->get('sql_expression_template_container'));
-                            },
-                            SqlLogType::T_AND => function (ContainerInterface $c) {
-                                return new SqlOperatorExpressionTemplate(
-                                    SqlOp::OP_AND, $c->get('sql_expression_template_container'));
-                            },
-                            SqlLogType::T_OR => function (ContainerInterface $c) {
-                                return new SqlOperatorExpressionTemplate(
-                                    SqlOp::OP_OR, $c->get('sql_expression_template_container'));
-                            },
-                            SqlLogType::T_NOT => function (ContainerInterface $c) {
-                                return new SqlFunctionExpressionTemplate(
-                                    SqlOp::OP_NOT, $c->get('sql_expression_template_container')
-                                );
-                            },
-                            SqlRelType::T_EQUAL_TO => function (ContainerInterface $c) {
-                                return new SqlOperatorExpressionTemplate(
-                                    SqlOp::OP_EQUAL_TO, $c->get('sql_expression_template_container')
-                                );
-                            },
-                            SqlRelType::T_GREATER_THAN => function (ContainerInterface $c) {
-                                return new SqlOperatorExpressionTemplate(
-                                    SqlOp::OP_GREATER_THAN, $c->get('sql_expression_template_container')
-                                );
-                            },
-                            SqlRelType::T_GREATER_EQUAL_TO => function (ContainerInterface $c) {
-                                return new SqlOperatorExpressionTemplate(
-                                    SqlOp::OP_GREATER_EQUAL_TO, $c->get('sql_expression_template_container')
-                                );
-                            },
-                            SqlRelType::T_LESS_THAN => function (ContainerInterface $c) {
-                                return new SqlOperatorExpressionTemplate(
-                                    SqlOp::OP_SMALLER, $c->get('sql_expression_template_container')
-                                );
-                            },
-                            SqlRelType::T_LESS_EQUAL_TO => function (ContainerInterface $c) {
-                                return new SqlOperatorExpressionTemplate(
-                                    SqlOp::OP_SMALLER_EQUAL_TO, $c->get('sql_expression_template_container')
-                                );
-                            },
-                            SqlRelType::T_LIKE => function (ContainerInterface $c) {
-                                return new SqlOperatorExpressionTemplate(
-                                    SqlOp::OP_LIKE, $c->get('sql_expression_template_container')
-                                );
-                            },
-                            SqlRelType::T_IN => function (ContainerInterface $c) {
-                                return new SqlOperatorExpressionTemplate(
-                                    SqlOp::OP_IN, $c->get('sql_expression_template_container'));
-                            },
-                            SqlRelType::T_BETWEEN => function (ContainerInterface $c) {
-                                return new SqlBetweenExpressionTemplate($c->get('sql_expression_template_container'));
-                            },
-                            SqlRelType::T_EXISTS => function (ContainerInterface $c) {
-                                return new SqlFunctionExpressionTemplate(
-                                    SqlOp::OP_EXISTS, $c->get('sql_expression_template_container')
-                                );
-                            },
-                        ],
-                    ]);
+                    $templates = [
+                        'literal' => function (ContainerInterface $c) {
+                            return new SqlLiteralTermTemplate();
+                        },
+                        'set' => function (ContainerInterface $c) {
+                            return new SqlFunctionExpressionTemplate('', $c->get('sql_expression_template'));
+                        },
+                        'variable' => function (ContainerInterface $c) {
+                            return new SqlReferenceTermTemplate();
+                        },
+                        'entity_field' => function (ContainerInterface $c) {
+                            return new SqlReferenceTermTemplate();
+                        },
+                        SqlExpressionMasterTemplate::K_GENERIC_FN_TEMPLATE => function (ContainerInterface $c) {
+                            return new SqlGenericFunctionExpressionTemplate($c->get('sql_expression_template'));
+                        },
+                        SqlLogType::T_AND => function (ContainerInterface $c) {
+                            return new SqlOperatorExpressionTemplate(
+                                SqlOp::OP_AND, $c->get('sql_expression_template'));
+                        },
+                        SqlLogType::T_OR => function (ContainerInterface $c) {
+                            return new SqlOperatorExpressionTemplate(
+                                SqlOp::OP_OR, $c->get('sql_expression_template'));
+                        },
+                        SqlLogType::T_NOT => function (ContainerInterface $c) {
+                            return new SqlFunctionExpressionTemplate(
+                                SqlOp::OP_NOT, $c->get('sql_expression_template')
+                            );
+                        },
+                        SqlRelType::T_EQUAL_TO => function (ContainerInterface $c) {
+                            return new SqlOperatorExpressionTemplate(
+                                SqlOp::OP_EQUAL_TO, $c->get('sql_expression_template')
+                            );
+                        },
+                        SqlRelType::T_GREATER_THAN => function (ContainerInterface $c) {
+                            return new SqlOperatorExpressionTemplate(
+                                SqlOp::OP_GREATER_THAN, $c->get('sql_expression_template')
+                            );
+                        },
+                        SqlRelType::T_GREATER_EQUAL_TO => function (ContainerInterface $c) {
+                            return new SqlOperatorExpressionTemplate(
+                                SqlOp::OP_GREATER_EQUAL_TO, $c->get('sql_expression_template')
+                            );
+                        },
+                        SqlRelType::T_LESS_THAN => function (ContainerInterface $c) {
+                            return new SqlOperatorExpressionTemplate(
+                                SqlOp::OP_SMALLER, $c->get('sql_expression_template')
+                            );
+                        },
+                        SqlRelType::T_LESS_EQUAL_TO => function (ContainerInterface $c) {
+                            return new SqlOperatorExpressionTemplate(
+                                SqlOp::OP_SMALLER_EQUAL_TO, $c->get('sql_expression_template')
+                            );
+                        },
+                        SqlRelType::T_LIKE => function (ContainerInterface $c) {
+                            return new SqlOperatorExpressionTemplate(
+                                SqlOp::OP_LIKE, $c->get('sql_expression_template')
+                            );
+                        },
+                        SqlRelType::T_IN => function (ContainerInterface $c) {
+                            return new SqlOperatorExpressionTemplate(
+                                SqlOp::OP_IN, $c->get('sql_expression_template'));
+                        },
+                        SqlRelType::T_BETWEEN => function (ContainerInterface $c) {
+                            return new SqlBetweenExpressionTemplate($c->get('sql_expression_template'));
+                        },
+                        SqlRelType::T_EXISTS => function (ContainerInterface $c) {
+                            return new SqlFunctionExpressionTemplate(
+                                SqlOp::OP_EXISTS, $c->get('sql_expression_template')
+                            );
+                        },
+                    ];
+
+                    return $c->get('container_factory')->make([ContainerFactoryInterface::K_DATA => $templates]);
                 },
 
                 /*==============================================================*
