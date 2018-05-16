@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ba1961ef244dddedbeb1b81b052f81a",
+    "content-hash": "b5b2d363193d6f79e3ab10d840f66110",
     "packages": [
         {
             "name": "dhii/args-list-validation",
@@ -860,16 +860,16 @@
         },
         {
             "name": "dhii/expression-renderer-abstract",
-            "version": "dev-task/initial-classes",
+            "version": "v0.1-alpha1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/expression-renderer-abstract.git",
-                "reference": "e8bf4aaa55f4294c5a1242cd69ccb58c11bff974"
+                "reference": "8c315e1d034b4198a89e0157f045e4a0d6cc8de8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/expression-renderer-abstract/zipball/e8bf4aaa55f4294c5a1242cd69ccb58c11bff974",
-                "reference": "e8bf4aaa55f4294c5a1242cd69ccb58c11bff974",
+                "url": "https://api.github.com/repos/Dhii/expression-renderer-abstract/zipball/8c315e1d034b4198a89e0157f045e4a0d6cc8de8",
+                "reference": "8c315e1d034b4198a89e0157f045e4a0d6cc8de8",
                 "shasum": ""
             },
             "require": {
@@ -908,20 +908,20 @@
                 }
             ],
             "description": "Abstract functionality for objects that can render expressions.",
-            "time": "2018-02-05T16:09:57+00:00"
+            "time": "2018-05-16T13:32:18+00:00"
         },
         {
             "name": "dhii/expression-renderer-base",
-            "version": "dev-task/initial-classes",
+            "version": "v0.1-alpha1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/expression-renderer-base.git",
-                "reference": "645d309a7196af33e221cb2151808dcdb1795286"
+                "reference": "0e9c76d6a20c7aa9aa87ff1287dbfdade847279d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/expression-renderer-base/zipball/645d309a7196af33e221cb2151808dcdb1795286",
-                "reference": "645d309a7196af33e221cb2151808dcdb1795286",
+                "url": "https://api.github.com/repos/Dhii/expression-renderer-base/zipball/0e9c76d6a20c7aa9aa87ff1287dbfdade847279d",
+                "reference": "0e9c76d6a20c7aa9aa87ff1287dbfdade847279d",
                 "shasum": ""
             },
             "require": {
@@ -929,7 +929,7 @@
                 "dhii/data-container-abstract": "^0.1-alpha1",
                 "dhii/data-container-base": "^0.1-alpha1",
                 "dhii/data-container-interface": "^0.2-alpha1",
-                "dhii/expression-renderer-abstract": "dev-task/initial-classes",
+                "dhii/expression-renderer-abstract": "^0.1-alpha1",
                 "dhii/i18n-helper-base": "^0.1-alpha1",
                 "dhii/iterator-helper-base": "^0.1-alpha2",
                 "dhii/normalization-helper-base": "^0.1-alpha2",
@@ -960,7 +960,7 @@
                 }
             ],
             "description": "Base functionality for expression renderers.",
-            "time": "2018-05-16T12:48:02+00:00"
+            "time": "2018-05-16T14:04:50+00:00"
         },
         {
             "name": "dhii/expression-renderer-interface",
@@ -2318,20 +2318,20 @@
         },
         {
             "name": "rebelcode/sql-expression-renderer",
-            "version": "dev-task/initial-classes",
+            "version": "v0.1-alpha1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/sql-expression-renderer.git",
-                "reference": "2dcfede7b92ddcaf15751b68e12749c6d038236c"
+                "reference": "051af010279b3376a854e0e3c5b66a6d68a2a3ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/sql-expression-renderer/zipball/2dcfede7b92ddcaf15751b68e12749c6d038236c",
-                "reference": "2dcfede7b92ddcaf15751b68e12749c6d038236c",
+                "url": "https://api.github.com/repos/RebelCode/sql-expression-renderer/zipball/051af010279b3376a854e0e3c5b66a6d68a2a3ab",
+                "reference": "051af010279b3376a854e0e3c5b66a6d68a2a3ab",
                 "shasum": ""
             },
             "require": {
-                "dhii/expression-renderer-base": "dev-task/initial-classes",
+                "dhii/expression-renderer-base": "^0.1-alpha1",
                 "dhii/sql-interface": "^0.1",
                 "php": "^5.4 | ^7.0"
             },
@@ -2344,6 +2344,11 @@
                 "ptrofimov/xpmock": "^1.1"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.1.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "RebelCode\\Expression\\Renderer\\Sql\\": "src"
@@ -2360,20 +2365,20 @@
                 }
             ],
             "description": "A library for rendering SQL conditions using expressions.",
-            "time": "2018-05-16T12:57:28+00:00"
+            "time": "2018-05-16T15:55:24+00:00"
         },
         {
             "name": "rebelcode/wp-cqrs-resource-models",
-            "version": "dev-task/initial-classes",
+            "version": "v0.1-alpha1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/wp-cqrs-resource-models.git",
-                "reference": "a6ac9fbfff5d267a8e0f1e51e59f83f72cf84d48"
+                "reference": "fa6ed0436ab14c1fe737c8d5a6aa5b2987bf23a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/wp-cqrs-resource-models/zipball/a6ac9fbfff5d267a8e0f1e51e59f83f72cf84d48",
-                "reference": "a6ac9fbfff5d267a8e0f1e51e59f83f72cf84d48",
+                "url": "https://api.github.com/repos/RebelCode/wp-cqrs-resource-models/zipball/fa6ed0436ab14c1fe737c8d5a6aa5b2987bf23a6",
+                "reference": "fa6ed0436ab14c1fe737c8d5a6aa5b2987bf23a6",
                 "shasum": ""
             },
             "require": {
@@ -2424,7 +2429,7 @@
                 }
             ],
             "description": "Functionality for WordPress CQRS resource models.",
-            "time": "2018-05-16T12:26:19+00:00"
+            "time": "2018-05-16T14:30:00+00:00"
         }
     ],
     "packages-dev": [
@@ -4318,8 +4323,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "rebelcode/wp-cqrs-resource-models": 20,
-        "rebelcode/sql-expression-renderer": 20,
         "dhii/data-container-interface": 20
     },
     "prefer-stable": true,
