@@ -916,12 +916,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/expression-renderer-base.git",
-                "reference": "344733af8b01d32a967d6f1555b8243fd8a01e18"
+                "reference": "645d309a7196af33e221cb2151808dcdb1795286"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/expression-renderer-base/zipball/344733af8b01d32a967d6f1555b8243fd8a01e18",
-                "reference": "344733af8b01d32a967d6f1555b8243fd8a01e18",
+                "url": "https://api.github.com/repos/Dhii/expression-renderer-base/zipball/645d309a7196af33e221cb2151808dcdb1795286",
+                "reference": "645d309a7196af33e221cb2151808dcdb1795286",
                 "shasum": ""
             },
             "require": {
@@ -960,7 +960,7 @@
                 }
             ],
             "description": "Base functionality for expression renderers.",
-            "time": "2018-04-09T18:56:18+00:00"
+            "time": "2018-05-16T12:48:02+00:00"
         },
         {
             "name": "dhii/expression-renderer-interface",
@@ -2105,16 +2105,16 @@
         },
         {
             "name": "rebelcode/expression-wp-query-builder",
-            "version": "dev-task/initial-classes",
+            "version": "v0.1-alpha1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/expression-wp-query-builder-abstract.git",
-                "reference": "7710fecf02e8b8c90133281e1b43184010043703"
+                "reference": "1f72a94ad22cd56aa50cc88bfb6ac068e732bf0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/expression-wp-query-builder-abstract/zipball/7710fecf02e8b8c90133281e1b43184010043703",
-                "reference": "7710fecf02e8b8c90133281e1b43184010043703",
+                "url": "https://api.github.com/repos/RebelCode/expression-wp-query-builder-abstract/zipball/1f72a94ad22cd56aa50cc88bfb6ac068e732bf0c",
+                "reference": "1f72a94ad22cd56aa50cc88bfb6ac068e732bf0c",
                 "shasum": ""
             },
             "require": {
@@ -2130,6 +2130,11 @@
                 "ptrofimov/xpmock": "^1.1"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.1.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "RebelCode\\WordPress\\Query\\Builder\\": "src"
@@ -2146,7 +2151,7 @@
                 }
             ],
             "description": "Abstract functionality for building WP_Query args using expressions.",
-            "time": "2018-05-09T11:41:52+00:00"
+            "time": "2018-05-16T10:53:34+00:00"
         },
         {
             "name": "rebelcode/modular",
@@ -2260,16 +2265,16 @@
         },
         {
             "name": "rebelcode/sql-cqrs-resource-models-abstract",
-            "version": "dev-task/initial-classes",
+            "version": "v0.1-alpha1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/sql-cqrs-resource-models-abstract.git",
-                "reference": "33b8fb98497b43ec187b1653d58c0c3abd346674"
+                "reference": "af88e1c69df6b5c2be84391a6df1d27022a9e52b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/sql-cqrs-resource-models-abstract/zipball/33b8fb98497b43ec187b1653d58c0c3abd346674",
-                "reference": "33b8fb98497b43ec187b1653d58c0c3abd346674",
+                "url": "https://api.github.com/repos/RebelCode/sql-cqrs-resource-models-abstract/zipball/af88e1c69df6b5c2be84391a6df1d27022a9e52b",
+                "reference": "af88e1c69df6b5c2be84391a6df1d27022a9e52b",
                 "shasum": ""
             },
             "require": {
@@ -2309,7 +2314,7 @@
                 }
             ],
             "description": "Abstract functionality for SQL CQRS resource models.",
-            "time": "2018-04-30T16:25:09+00:00"
+            "time": "2018-05-16T10:12:48+00:00"
         },
         {
             "name": "rebelcode/sql-expression-renderer",
@@ -2317,12 +2322,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/sql-expression-renderer.git",
-                "reference": "3a6c7f28e83ff1445a24eac2f117b7db8b25cd9d"
+                "reference": "2dcfede7b92ddcaf15751b68e12749c6d038236c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/sql-expression-renderer/zipball/3a6c7f28e83ff1445a24eac2f117b7db8b25cd9d",
-                "reference": "3a6c7f28e83ff1445a24eac2f117b7db8b25cd9d",
+                "url": "https://api.github.com/repos/RebelCode/sql-expression-renderer/zipball/2dcfede7b92ddcaf15751b68e12749c6d038236c",
+                "reference": "2dcfede7b92ddcaf15751b68e12749c6d038236c",
                 "shasum": ""
             },
             "require": {
@@ -2355,7 +2360,7 @@
                 }
             ],
             "description": "A library for rendering SQL conditions using expressions.",
-            "time": "2018-04-27T14:36:11+00:00"
+            "time": "2018-05-16T12:57:28+00:00"
         },
         {
             "name": "rebelcode/wp-cqrs-resource-models",
@@ -2363,12 +2368,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/wp-cqrs-resource-models.git",
-                "reference": "75400cab8a4d365afb390827d1c275dfe09bc91e"
+                "reference": "a6ac9fbfff5d267a8e0f1e51e59f83f72cf84d48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/wp-cqrs-resource-models/zipball/75400cab8a4d365afb390827d1c275dfe09bc91e",
-                "reference": "75400cab8a4d365afb390827d1c275dfe09bc91e",
+                "url": "https://api.github.com/repos/RebelCode/wp-cqrs-resource-models/zipball/a6ac9fbfff5d267a8e0f1e51e59f83f72cf84d48",
+                "reference": "a6ac9fbfff5d267a8e0f1e51e59f83f72cf84d48",
                 "shasum": ""
             },
             "require": {
@@ -2381,8 +2386,8 @@
                 "dhii/iterator-helper-base": "^0.1-alpha2",
                 "dhii/normalization-helper-base": "^0.1",
                 "php": "^5.4 | ^7.0",
-                "rebelcode/expression-wp-query-builder": "dev-task/initial-classes",
-                "rebelcode/sql-cqrs-resource-models-abstract": "dev-task/initial-classes"
+                "rebelcode/expression-wp-query-builder": "^0.1-alpha1",
+                "rebelcode/sql-cqrs-resource-models-abstract": "^0.1-alpha1"
             },
             "require-dev": {
                 "codeclimate/php-test-reporter": "<=0.3.2",
@@ -2419,7 +2424,7 @@
                 }
             ],
             "description": "Functionality for WordPress CQRS resource models.",
-            "time": "2018-04-30T16:30:37+00:00"
+            "time": "2018-05-16T12:26:19+00:00"
         }
     ],
     "packages-dev": [
