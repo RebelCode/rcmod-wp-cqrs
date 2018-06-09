@@ -146,6 +146,9 @@ class WpCqrsModule extends AbstractBaseModule
                         'entity_field' => function (ContainerInterface $c) {
                             return new SqlReferenceTermTemplate();
                         },
+                        'is' => function (ContainerInterface $c) {
+                            return new SqlOperatorExpressionTemplate('IS', $c->get('sql_expression_template'));
+                        },
                         SqlExpressionMasterTemplate::K_GENERIC_FN_TEMPLATE => function (ContainerInterface $c) {
                             return new SqlGenericFunctionExpressionTemplate($c->get('sql_expression_template'));
                         },
@@ -232,6 +235,7 @@ class WpCqrsModule extends AbstractBaseModule
                         'lit'  => $c->get('sql_literal_expression_builder_factory'),
                         'var'  => $c->get('sql_variable_expression_builder_factory'),
                         'ef'   => $c->get('sql_entity_field_expression_builder_factory'),
+                        'is'   => $c->get('sql_is_expression_builder_factory'),
                         'and'  => $c->get('sql_and_expression_builder_factory'),
                         'or'   => $c->get('sql_or_expression_builder_factory'),
                         'not'  => $c->get('sql_not_expression_builder_factory'),
@@ -303,6 +307,18 @@ class WpCqrsModule extends AbstractBaseModule
                         $arguments = $this->_containerGet($config, 'arguments');
 
                         return new EntityFieldTerm($arguments[0], $arguments[1], 'entity_field');
+                    });
+                },
+                /*
+                 * The SQL IS expression builder factory service.
+                 *
+                 * @since [*next-version*]
+                 */
+                'sql_is_expression_builder_factory' => function (ContainerInterface $c) {
+                    return new GenericCallbackFactory(function ($config) {
+                        $arguments = $this->_containerGet($config, 'arguments');
+
+                        return new LogicalExpression($arguments, false, 'is');
                     });
                 },
                 /*
