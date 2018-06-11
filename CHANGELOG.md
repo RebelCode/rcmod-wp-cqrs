@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [[*next-version*]] - YYYY-MM-DD
+
+## [0.1-alpha2] - 2018-06-11
 ### Added
 - Expression builder factory and template for the SQL `IS` operator.
 
