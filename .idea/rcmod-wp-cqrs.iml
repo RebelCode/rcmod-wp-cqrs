@@ -12,7 +12,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/collections-interface" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/config-interface" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/container-helper-base" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/cqrs-resource-model-interface" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/data-container-abstract" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/data-container-base" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dhii/data-container-interface" />
@@ -65,12 +64,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/ptrofimov/xpmock" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/rebelcode/expression-wp-query-builder" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/rebelcode/modular" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/rebelcode/module-iterator-abstract" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/rebelcode/sql-cqrs-resource-models-abstract" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/rebelcode/sql-expression-renderer" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/rebelcode/wp-cqrs-resource-models" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/satooshi/php-coveralls" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/comparator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/diff" />

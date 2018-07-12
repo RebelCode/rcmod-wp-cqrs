@@ -8,7 +8,6 @@
       <path value="$PROJECT_DIR$/vendor/codeclimate/php-test-reporter" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/rebelcode/sql-expression-renderer" />
-      <path value="$PROJECT_DIR$/vendor/rebelcode/sql-cqrs-resource-models-abstract" />
       <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
       <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
       <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
@@ -19,9 +18,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
       <path value="$PROJECT_DIR$/vendor/ptrofimov/xpmock" />
       <path value="$PROJECT_DIR$/vendor/satooshi/php-coveralls" />
-      <path value="$PROJECT_DIR$/vendor/rebelcode/expression-wp-query-builder" />
       <path value="$PROJECT_DIR$/vendor/rebelcode/module-iterator-abstract" />
-      <path value="$PROJECT_DIR$/vendor/rebelcode/wp-cqrs-resource-models" />
       <path value="$PROJECT_DIR$/vendor/rebelcode/modular" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
@@ -30,7 +27,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
       <path value="$PROJECT_DIR$/vendor/symfony/config" />
       <path value="$PROJECT_DIR$/vendor/symfony/finder" />
-      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
@@ -69,7 +65,6 @@
       <path value="$PROJECT_DIR$/vendor/dhii/module-interface" />
       <path value="$PROJECT_DIR$/vendor/dhii/type-interface" />
       <path value="$PROJECT_DIR$/vendor/dhii/event-interface" />
-      <path value="$PROJECT_DIR$/vendor/dhii/cqrs-resource-model-interface" />
       <path value="$PROJECT_DIR$/vendor/dhii/factory-interface" />
       <path value="$PROJECT_DIR$/vendor/dhii/invocable-base" />
       <path value="$PROJECT_DIR$/vendor/dhii/expression-renderer-abstract" />
@@ -86,6 +81,8 @@
       <path value="$PROJECT_DIR$/vendor/dhii/validation-interface" />
       <path value="$PROJECT_DIR$/vendor/dhii/i18n-interface" />
       <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />
