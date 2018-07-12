@@ -6,5 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [[*next-version*]] - YYYY-MM-DD
 
+## [0.1-alpha2] - 2018-06-11
+### Added
+- Expression builder factory and template for the SQL `IS` operator.
+
 ## [0.1-alpha1] - 2018-05-21
 Initial version.
