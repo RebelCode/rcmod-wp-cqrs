@@ -22,8 +22,8 @@ class LiteralTerm extends AbstractTerm implements LiteralTermInterface
         _getValue as public getValue;
     }
 
-    /*
-     * The default type.
+    /**
+     * The default term type.
      *
      * @since [*next-version*]
      */

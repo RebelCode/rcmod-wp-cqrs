@@ -31,6 +31,13 @@ class VariableTerm extends AbstractTerm implements VariableTermInterface
     use NormalizeStringCapableTrait;
 
     /**
+     * The default term type.
+     *
+     * @since [*next-version*]
+     */
+    const DEFAULT_TYPE = 'variable';
+
+    /**
      * Constructor.
      *
      * @since [*next-version*]
@@ -38,7 +45,7 @@ class VariableTerm extends AbstractTerm implements VariableTermInterface
      * @param string|Stringable $key  The term key; in other words, the name of the variable.
      * @param string|Stringable $type The term type.
      */
-    public function __construct($key, $type = '')
+    public function __construct($key, $type = self::DEFAULT_TYPE)
     {
         $this->_setKey($key);
         $this->_setType($type);

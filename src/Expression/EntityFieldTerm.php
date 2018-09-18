@@ -40,6 +40,13 @@ class EntityFieldTerm extends AbstractTerm implements EntityFieldInterface, Vari
     use NormalizeStringCapableTrait;
 
     /**
+     * The default term type.
+     *
+     * @since [*next-version*]
+     */
+    const DEFAULT_TYPE = 'entity_field';
+
+    /**
      * Constructor.
      *
      * @since [*next-version*]
@@ -48,7 +55,7 @@ class EntityFieldTerm extends AbstractTerm implements EntityFieldInterface, Vari
      * @param string|Stringable $field  The field name.
      * @param string|Stringable $type   The term type.
      */
-    public function __construct($entity, $field, $type = '')
+    public function __construct($entity, $field, $type = self::DEFAULT_TYPE)
     {
         $this->_setEntity($entity);
         $this->_setField($field);
