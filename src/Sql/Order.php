@@ -53,7 +53,7 @@ class Order implements OrderInterface
     {
         $this->_setEntity($entity);
         $this->_setField($field);
-        $this->ascending = $ascending;
+        $this->_setAscending($ascending);
     }
 
     /**
@@ -84,5 +84,23 @@ class Order implements OrderInterface
     public function isAscending()
     {
         return $this->ascending;
+    }
+
+    /**
+     * Sets the ascending flag for this instance.
+     *
+     * @since [*next-version*]
+     *
+     * @param bool $ascending True for ascending, false for descending.
+     */
+    protected function _setAscending($ascending)
+    {
+        if (!is_bool($ascending)) {
+            throw $this->_createInvalidArgumentException(
+                $this->__('Argument is not a boolean value'), null, null, $ascending
+            );
+        }
+
+        $this->ascending = $ascending;
     }
 }
