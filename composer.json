@@ -36,7 +36,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "RebelCode\\Expression\\UnitTes\\t": "test/unit/Expression",
+            "RebelCode\\Expression\\UnitTest\\": "test/unit/Expression",
             "RebelCode\\Expression\\FuncTest\\": "test/functional/Expression",
             "RebelCode\\Storage\\UnitTest\\Resource\\Sql\\": "test/unit/Sql",
             "RebelCode\\Storage\\FuncTest\\Resource\\Sql\\": "test/functional/Sql",
