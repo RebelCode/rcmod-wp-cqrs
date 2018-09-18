@@ -4,7 +4,9 @@ namespace RebelCode\Expression;
 
 use Dhii\Expression\Renderer\AbstractBaseSelfDelegateExpressionTemplate;
 use Dhii\Expression\TermInterface;
+use Exception as RootException;
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use RebelCode\Expression\Renderer\Sql\SqlGenericFunctionExpressionTemplate;
 
 /**
@@ -49,6 +51,28 @@ class SqlExpressionMasterTemplate extends AbstractBaseSelfDelegateExpressionTemp
             $type = static::K_GENERIC_FN_TEMPLATE;
         }
 
-        return $this->_getTermTypeRenderer($type);
+        try {
+            return $this->_getTermTypeRenderer($type);
+        } catch (NotFoundExceptionInterface $exception) {
+            throw $this->_createOutOfRangeException(
+                $this->__('Term type does not correspond to a renderer'),
+                null,
+                $exception,
+                $term
+            );
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    protected function _throwRendererException(
+        $message = null,
+        $code = null,
+        RootException $previous = null
+    ) {
+        throw $this->_createRendererException($message, $code, $previous, $this);
     }
 }
