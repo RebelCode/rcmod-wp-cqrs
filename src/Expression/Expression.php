@@ -20,8 +20,8 @@ class Expression extends AbstractExpression implements ExpressionInterface
      *
      * @since [*next-version*]
      *
-     * @param TermInterface|stdClass|Traversable $terms The expression terms.
-     * @param string|Stringable                  $type  The expression type.
+     * @param TermInterface[]|stdClass|Traversable $terms The expression terms.
+     * @param string|Stringable                    $type  The expression type.
      */
     public function __construct($terms = [], $type = '')
     {

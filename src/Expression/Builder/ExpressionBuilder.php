@@ -13,6 +13,7 @@ use Dhii\Exception\CreateInternalExceptionCapableTrait;
 use Dhii\Exception\CreateInvalidArgumentExceptionCapableTrait;
 use Dhii\Exception\CreateOutOfRangeExceptionCapableTrait;
 use Dhii\Exception\InternalException;
+use Dhii\Factory\FactoryInterface;
 use Dhii\I18n\StringTranslatingTrait;
 use Dhii\Util\Normalization\NormalizeStringCapableTrait;
 use Dhii\Util\String\StringableInterface as Stringable;
@@ -113,7 +114,7 @@ class ExpressionBuilder implements ExpressionBuilderInterface
      *
      * @since [*next-version*]
      *
-     * @param array|ArrayAccess|stdClass|ContainerInterface $factories The expression factories.
+     * @param FactoryInterface[]|ArrayAccess|stdClass|ContainerInterface $factories The expression factories.
      */
     public function __construct($factories)
     {
