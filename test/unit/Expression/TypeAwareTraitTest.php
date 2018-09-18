@@ -1,9 +1,10 @@
 <?php
 
-namespace RebelCode\Expression\UnitTest;
+namespace RebelCode\Expression\FuncTest;
 
+use InvalidArgumentException;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
-use RebelCode\Expression\AbstractTerm as TestSubject;
+use RebelCode\Expression\TypeAwareTrait as TestSubject;
 use stdClass;
 use Xpmock\TestCase;
 
@@ -12,29 +13,34 @@ use Xpmock\TestCase;
  *
  * @since [*next-version*]
  */
-class AbstractTermTest extends TestCase
+class TypeAwareTraitTest extends TestCase
 {
     /**
      * The class name of the test subject.
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'RebelCode\Expression\AbstractTerm';
+    const TEST_SUBJECT_CLASSNAME = 'RebelCode\Expression\TypeAwareTrait';
 
     /**
      * Creates a new instance of the test subject.
      *
      * @since [*next-version*]
      *
-     * @param array $methods The methods to mock.
-     *
-     * @return MockObject|TestSubject
+     * @return TestSubject|MockObject The new instance.
      */
-    public function createInstance(array $methods = [])
+    public function createInstance()
     {
-        return $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
-                    ->setMethods($methods)
-                    ->getMockForAbstractClass();
+        $mock = $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
+                     ->setMethods([
+                         '_createInvalidArgumentException',
+                         '__',
+                     ])
+                     ->getMockForTrait();
+
+        $mock->method('__')->will($this->returnArgument(0));
+
+        return $mock;
     }
 
     /**
@@ -46,16 +52,10 @@ class AbstractTermTest extends TestCase
     {
         $subject = $this->createInstance();
 
-        $this->assertInstanceOf(
-            static::TEST_SUBJECT_CLASSNAME,
+        $this->assertInternalType(
+            'object',
             $subject,
             'A valid instance of the test subject could not be created.'
-        );
-
-        $this->assertInstanceOf(
-            'Dhii\Expression\TermInterface',
-            $subject,
-            'Test subject does not implement expected interface.'
         );
     }
 
@@ -74,7 +74,7 @@ class AbstractTermTest extends TestCase
 
         $reflect->_setType($type);
 
-        $this->assertEquals($type, $subject->getType(), 'Set and retrieved term types do not match.');
+        $this->assertEquals($type, $reflect->_getType(), 'Set and retrieved term types do not match.');
     }
 
     /**
@@ -92,7 +92,7 @@ class AbstractTermTest extends TestCase
 
         $reflect->_setType($type);
 
-        $this->assertEquals($type, $subject->getType(), 'Set and retrieved term types do not match.');
+        $this->assertEquals($type, $reflect->_getType(), 'Set and retrieved term types do not match.');
     }
 
     /**
@@ -106,6 +106,11 @@ class AbstractTermTest extends TestCase
         $reflect = $this->reflect($subject);
 
         $type = new stdClass();
+
+        $subject->expects($this->once())
+                ->method('_createInvalidArgumentException')
+                ->with($this->isType('string'), $this->anything(), null, $type)
+                ->willReturn(new InvalidArgumentException());
 
         $this->setExpectedException('InvalidArgumentException');
 
