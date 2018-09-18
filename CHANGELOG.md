@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [[*next-version*]] - YYYY-MM-DD
+### Added
+- Unit and functional tests for the module and all bundled code.
+
+### Changed
+- Using newer version (`v0.2`) of `rebelcode/modular` module system.
 
 ## [0.1-alpha3] - 2018-07-12
 ### Changed
