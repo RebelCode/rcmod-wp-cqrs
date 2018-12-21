@@ -1,17 +1,10 @@
 <?php
 
-use Psr\Container\ContainerInterface;
-use RebelCode\Storage\Resource\WordPress\Module\WpCqrsModule;
+use RebelCode\Storage\Resource\WordPress\Module\Module;
 
-define('RC_WP_CQRS_MODULE_DIR', __DIR__);
-define('RC_WP_CQRS_MODULE_KEY', 'wp_cqrs');
+$key = 'wp_cqrs';
+$deps = [];
+$configFile = __DIR__ . '/config.php';
+$servicesFile = __DIR__ . '/services.php';
 
-return function (ContainerInterface $c) {
-    return new WpCqrsModule(
-        RC_WP_CQRS_MODULE_KEY,
-        [],
-        $c->get('config_factory'),
-        $c->get('container_factory'),
-        $c->get('composite_container_factory')
-    );
-};
+return new Module($key, $deps, $configFile, $servicesFile);
