@@ -13,7 +13,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^5.4 | ^7.0",
-        "rebelcode/modular": "^0.1-alpha1",
+        "rebelcode/modular": "0.2.x-dev",
         "rebelcode/sql-expression-renderer": "^0.1-alpha1",
         "dhii/data-object-abstract": "^0.1-alpha1",
         "dhii/factory-base": "^0.1-alpha1"
